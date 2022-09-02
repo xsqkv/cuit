@@ -1,0 +1,3 @@
+/home/user/repos/asciitor/cmake/CMakeFiles/test.dir
+/home/user/repos/asciitor/cmake/CMakeFiles/edit_cache.dir
+/home/user/repos/asciitor/cmake/CMakeFiles/rebuild_cache.dir

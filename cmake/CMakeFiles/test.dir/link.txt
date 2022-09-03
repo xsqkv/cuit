@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/test.dir/home/user/repos/asciitor/src/tests/test.cpp.o -o test 

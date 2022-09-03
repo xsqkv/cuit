@@ -1,18 +1,5 @@
 #include <iostream>
 #include "lib/cuit.h"
-//#include "lib/hsv.h"
-//#include "lib/utils.h"
-//#include "lib/rgb.h"
-//#include "lib/sz.h"
-//#include "lib/pos.h"
-//#include "lib/cchar.h"
-//#include "lib/cli.h"
-//#include "lib/control.h"
-//#include "lib/controls.h"
-//#include "lib/containerControl.h"
-//#include "lib/windowSettings.h"
-//#include "lib/window.h"
-//#include "lib/label.h"
 
 
 // ======== CUI =========

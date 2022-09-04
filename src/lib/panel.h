@@ -1,6 +1,6 @@
-#include "containerControl.h"
-
 #pragma once
+
+#include "containerControl.h"
 
 class panel : public containerControl
 {

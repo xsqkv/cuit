@@ -1,7 +1,9 @@
+#pragma once
+
 #include "control.h"
 #include "controls.h"
 
-#pragma once
+
 
 class containerControl : public control
 {

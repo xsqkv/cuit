@@ -1,8 +1,8 @@
+#pragma once
+
 #include<iostream>
 
 #include "utils.h"
-
-#pragma once
 
 class cchar
 {

@@ -1,3 +1,5 @@
+#pragma once
+
 #include<iostream>
 
 #include <unistd.h> //STDOUT_FILENO in cli::getSize()
@@ -6,7 +8,7 @@
 #include "sz.h"
 #include "cchar.h"
 
-#pragma once
+
 
 class cli final
 {

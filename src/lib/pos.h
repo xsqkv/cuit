@@ -1,6 +1,6 @@
-#include "sz.h"
-
 #pragma once
+
+#include "sz.h"
 
 class pos
 {

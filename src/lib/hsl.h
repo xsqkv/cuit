@@ -1,9 +1,9 @@
+#pragma once
+
 #include<iostream>
 
 #include "hsv.h"
 #include "utils.h"
-
-#pragma once
 
 class hsl
 {

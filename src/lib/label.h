@@ -1,6 +1,7 @@
+#pragma once
+
 #include "control.h"
 
-#pragma once
 
 class label : public control
 {

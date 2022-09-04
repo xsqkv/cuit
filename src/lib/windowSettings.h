@@ -1,6 +1,6 @@
-#include "cchar.h"
-
 #pragma once
+
+#include "cchar.h"
 
 class windowSettings
 {

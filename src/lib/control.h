@@ -1,8 +1,10 @@
+#pragma once
+
 #include "sz.h"
 #include "pos.h"
 #include "cli.h"
 
-#pragma once
+
 
 class control
 {

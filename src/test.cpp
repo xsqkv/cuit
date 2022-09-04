@@ -2,14 +2,6 @@
 #include "lib/cuit.h"
 
 
-// ======== CUI =========
-// Global Variables
-bool EXTENDED_COLORS = 1;
-bool PSEUDO_GRAPHICS = 1;
-bool CUSTOM_FONT = 0;
-bool USE_SCALING = 0;
-
-
 namespace bt
 {
     inline void st(short& num,uint8_t idx)
@@ -153,9 +145,7 @@ inline void testGetRGB()
 
 int main(int argc,char** argv)
 {
-    auto a = min(9.6,3.6,4.6);
-
-    printf("%F \n",a);
+    
 
     return 0;
 }

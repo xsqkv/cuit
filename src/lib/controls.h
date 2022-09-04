@@ -1,8 +1,10 @@
+#pragma once
+
 #include<iostream>
 
 #include "control.h"
 
-#pragma once
+
 
 class controls
 { 

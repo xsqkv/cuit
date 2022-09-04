@@ -1,6 +1,6 @@
-#include "control.h"
-
 #pragma once
+
+#include "control.h"
 
 class button : public control
 {

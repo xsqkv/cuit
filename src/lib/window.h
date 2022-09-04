@@ -1,9 +1,10 @@
+#pragma once
+
 #include<iostream>
 
 #include "containerControl.h"
 #include "windowSettings.h"
 
-#pragma once
 
 class window : public containerControl
 {

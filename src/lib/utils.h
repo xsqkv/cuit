@@ -1,6 +1,6 @@
-#include<iostream>
-
 #pragma once
+
+#include<iostream>
 
 inline constexpr int strlen(char* str)
 {
@@ -114,7 +114,7 @@ inline constexpr T max(T a,T b)
 template<typename T>
 inline constexpr T max(T a,T b,T c)
 {
-    uint8_t tmp = max(a,b);
+    T tmp = max(a,b);
     if(tmp>c) return tmp;
     else return c;
 }
@@ -128,7 +128,7 @@ inline constexpr T min(T a,T b)
 template<typename T>
 inline constexpr T min(T a,T b,T c)
 {
-    uint8_t tmp = min(a,b);
+    T tmp = min(a,b);
     if(tmp<c) return tmp;
     else return c;
 }

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "button.h"
 #include "cchar.h"
 #include "cli.h"
@@ -10,11 +12,10 @@
 #include "panel.h"
 #include "pos.h"
 #include "pseudoGraphics.h"
-#include "rgb.h"
 #include "scrollableControl.h"
 #include "sz.h"
 #include "utils.h"
 #include "window.h"
 #include "windowSettings.h"
-
-#pragma once
+#include "seqColor.h"
+#include "rgb.h"

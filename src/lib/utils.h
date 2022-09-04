@@ -118,6 +118,7 @@ inline constexpr T max(T a,T b,T c)
     if(tmp>c) return tmp;
     else return c;
 }
+
 template<typename T>
 inline constexpr T min(T a,T b)
 {

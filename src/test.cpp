@@ -153,8 +153,9 @@ inline void testGetRGB()
 
 int main(int argc,char** argv)
 {
-    rgb a("FF10FF");
-    a.print();
+    auto a = min(9.6,3.6,4.6);
+
+    printf("%F \n",a);
 
     return 0;
 }

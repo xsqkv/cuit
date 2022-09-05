@@ -44,26 +44,27 @@ void test()
     window w(5,5,1);
     w.setPos({5,5,1});
     w.settings.fill={"o",47};
-    w.settings.borders={"*",123};
-    w.settings.corners={"7",5};
-    w.settings.hBar={"-",30};
-    w.settings.vBar={"|",21};
-    //w.settings.topBar={"<",134};
-    //w.settings.leftBar={"v",200};
-    //w.settings.rightBar={"^",250};
-    //w.settings.downBar={">",150};
-//
-    //w.settings.leftTopCorner={"<",134};
-    //w.settings.rightTopCorner={"^",250};
-    //w.settings.leftDownCorner={"v",200};
-    //w.settings.rightDownCorner={">",150};
+    //w.settings.borders={"*",123};
+    //w.settings.corners={"7",5};
+    w.settings.hBar={"─",30};
+    w.settings.vBar={"│",21};
+    //w.settings.topBar={"─",134};
+    //w.settings.leftBar={"│",200};
+    //w.settings.rightBar={"│",250};
+    //w.settings.downBar={"─",150};
+
+    w.settings.leftTopCorner={"╭",134};
+    w.settings.rightTopCorner={"╮",250};
+    w.settings.leftDownCorner={"╰",200};
+    w.settings.rightDownCorner={"╯",150};
     label l;
-    l.overwriteBorders = 0;
+    l.overwriteBorders = 1;
     l.setPos({7,3,1});
-    l.setText({"label",177});
+    l.setText({"Dufffh",37});
     w.elements.add(&l);
     w.show();
     cli().setCursor(0,0);
+    getchar();
 }
 
 inline constexpr void rgb2seq(uint8_t &x)
@@ -145,7 +146,7 @@ inline void testGetRGB()
 
 int main(int argc,char** argv)
 {
-    
+    test();
 
     return 0;
 }

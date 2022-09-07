@@ -2,6 +2,8 @@
 
 #include<iostream>
 
+const char* s = "0123456789ABCDEF";
+
 inline constexpr int strlen(char* str)
 {
     int count = 0;
@@ -133,7 +135,21 @@ inline constexpr T min(T a,T b,T c)
     else return c;
 }
 
-inline constexpr int iof(char* arr,char x)
+template<class T>
+inline constexpr int iof(T* arr,T x)
+{
+    int sz = strlen(arr);
+
+    for(int i=0;i < sz;i++)
+    {
+        if(x == arr[i]) return i;
+    }
+
+    return 0;
+}
+
+template<class T>
+inline constexpr int iof(const T* arr,T x)
 {
     int sz = strlen(arr);
 
@@ -148,7 +164,6 @@ inline constexpr int iof(char* arr,char x)
 inline constexpr int from16to10(char* x)
 {
     upper(x);
-    constexpr char* s = "0123456789ABCDEF";
     int sz = strlen(x);
     int result = 0;
     for(int i = 0;i < sz;i++)
@@ -161,7 +176,6 @@ inline constexpr int from16to10(char* x)
 inline constexpr int from16to10(const char* X)
 {
     char* x = upper(X);
-    constexpr char* s = "0123456789ABCDEF";
     int sz = strlen(x);
     int result = 0;
     for(int i = 0;i < sz;i++)
@@ -169,4 +183,37 @@ inline constexpr int from16to10(const char* X)
         result += iof(s,x[i]) * pow(16,sz - i - 1);
     }
     return result;
+}
+
+inline char* from10to16(int x)
+{
+    std::string res = "";
+    while(x != 0)
+    {
+        res += s[x % 16];
+        x /= 16;
+    }
+    return const_cast<char*>(res.c_str());
+}
+
+inline char* reverse(char* arr)
+{
+    int sz = strlen(arr);
+    char* res = new char[sz];
+    for(int i = 0; i < sz ;i++)
+    {
+        res[i] = arr[sz-i-1];
+    }
+    return res;
+}
+
+constexpr inline char* reverse(const char* arr)
+{
+    int sz = strlen(arr);
+    char* res = new char[sz];
+    for(int i = 0; i<sz/2 ;i++)
+    {
+        res[i] = arr[sz-i];
+    }
+    return res;
 }

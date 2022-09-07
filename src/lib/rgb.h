@@ -183,6 +183,15 @@ class rgb
         b = val;
     }
 
+    inline char* toHex()
+    {
+        int val;
+        val += r << 16;
+        val += g << 8;
+        val += b;
+        return from10to16(val);
+    }
+
     inline constexpr rgb() : r(0),g(0),b(0) , pr(0),pg(0),pb(0) {}
 
     inline constexpr rgb(uint8_t red, uint8_t green, uint8_t blue)

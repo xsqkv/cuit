@@ -24,22 +24,21 @@ class cchar
     };
     enum class sysColors : char8_t
     {
-        Black,
-        Maroon,
-        Green,
-        Olive,
-        Navy,
-        Purple,
-        Teal,
-        Silver,
-        Grey,
+        None,
         Red,
-        Lime,
         Yellow,
         Blue,
-        Fuchsia,
-        Aqua,
-        White
+        Magenta,
+        Cyan,
+        Silver,
+        Gray,
+        LRed,
+        Lime,
+        LYellow,
+        Navy,
+        Pink,
+        LCyan,
+        White,
     };
 
     void setColor(unsigned foreground, unsigned background, unsigned style)
@@ -55,18 +54,32 @@ class cchar
             if(style & 32)result += "06;";
             if(style & 64)result += "07;";
             if(style & 128)result += "08;";
-        }  
-        result += "38;05;" + its(foreground) + ";";
-        result += "48;05;" + its(background) + "m";
+        }
+        if(foreground && background)
+        {
+            result += "38;05;" + its(foreground) + ";";
+        }
+        else if(foreground)
+        {
+            result += "38;05;" + its(foreground);
+        }
+        if(background)
+        {
+            result += "48;05;" + its(background) + "m";
+        }
+        else
+        {
+            result += 'm';
+        }
         clr = result;
     }
 
-    char* getStr()
+    constexpr inline char* getStr()
     {
         return (char*)(str.c_str());
     }
 
-    char* getClr()
+    constexpr inline char* getClr()
     {
         return (char*)(clr.c_str());
     }
@@ -76,27 +89,27 @@ class cchar
         return strlen((char*)str.c_str());
     }
 
-    cchar() : clr(""), str("") {}
+    constexpr inline cchar() : clr(""), str("") {}
 
-    cchar(char ch,unsigned foreground=0, unsigned background=0, unsigned style=0)
+    constexpr inline cchar(char ch,unsigned foreground=0, unsigned background=0, unsigned style=0)
     {
         str.push_back(ch);
         setColor(foreground,background,style);
     }
 
-    cchar(char* s,unsigned foreground=0, unsigned background=0, unsigned style=0)
+    constexpr inline cchar(char* s,unsigned foreground=0, unsigned background=0, unsigned style=0)
     {
         str.assign(s);
         setColor(foreground,background,style);
     }
 
-    cchar(const char* s,unsigned foreground=0, unsigned background=0, unsigned style=0)
+    constexpr inline cchar(const char* s,unsigned foreground=0, unsigned background=0, unsigned style=0)
     {
         str.assign(s);
         setColor(foreground,background,style);
     }
 
-    cchar(unsigned foreground, unsigned background, unsigned style)
+    constexpr inline cchar(unsigned foreground, unsigned background, unsigned style)
     {
         setColor(foreground,background,style);
     }

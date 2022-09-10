@@ -146,13 +146,10 @@ inline void testGetRGB()
 
 int main(int argc,char** argv)
 {
-    //char* a = from10to16(128);
-
-    //std::cerr<<a<<'\n';
-
-    char * a = "321";
-
-    std::cerr << reverse(a) << '\n';
+    for(int i=0;i<=128;i++)
+    {
+        std::cerr << i << " = " << from10to16(i) << '\n';
+    }
 
     return 0;
 }

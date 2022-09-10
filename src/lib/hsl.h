@@ -22,7 +22,7 @@ class hsl
         h = x.h;
         l = x.v * (1 - x.v / 2);
         if(l == 0 || l == 1) s = 0;
-        else (x.v - l) / min(l, 1 - l);
+        else s = (x.v - l) / min(l, 1 - l);
     }
 
     inline constexpr void toHSV(hsv& x)

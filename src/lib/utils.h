@@ -185,17 +185,6 @@ inline constexpr int from16to10(const char* X)
     return result;
 }
 
-inline char* from10to16(int x)
-{
-    std::string res = "";
-    while(x != 0)
-    {
-        res += s[x % 16];
-        x /= 16;
-    }
-    return const_cast<char*>(res.c_str());
-}
-
 inline char* reverse(char* arr)
 {
     int sz = strlen(arr);
@@ -216,4 +205,34 @@ constexpr inline char* reverse(const char* arr)
         res[i] = arr[sz-i];
     }
     return res;
+}
+
+inline char* from10to16(int x)
+{
+    std::string res = "";
+    char* result;
+    if(!x) { res = "0"; result = (char*)malloc(res.size()); result = (char*)res.c_str();return result; }
+    while(x)
+    {
+        res = s[x % 16] + res;
+        x /= 16;
+    }
+    result = (char*)malloc(res.size());
+    result = (char*)res.c_str();
+    return result;
+}
+
+inline const char* from10to16_2(int x)
+{
+    std::string res = "";
+    const char* result;
+    if(!x) { res = "0"; result = (const char*)malloc(res.size()); result = (const char*)res.c_str();return result; }
+    while(x)
+    {
+        res = s[x % 16] + res;
+        x /= 16;
+    }
+    result = (const char*)malloc(res.size());
+    result = (const char*)res.c_str();
+    return result;
 }

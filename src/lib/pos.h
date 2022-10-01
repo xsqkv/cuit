@@ -4,7 +4,6 @@
 
 class pos
 {
-    float fx,fy;
     public:
     unsigned x,y;
     
@@ -25,19 +24,15 @@ class pos
     
     static constexpr float norm = 79.0/34.0; // pixel on pixel division
 
-    pos(){}
+    constexpr inline pos() : x(1),y(1) {}
 
-    pos(unsigned X, unsigned Y, bool normed = 0)
+    constexpr inline pos(unsigned X, unsigned Y, bool normed)
     {
         //if(!x)x=1;
         //if(!y)y=1;
-        if(normed) x *= norm;
+        if(normed) X *= norm;
 
         x=X;
         y=Y;
     }
-
-    pos(float x, float y, unsigned width, unsigned height, bool normed = 0) : pos(static_cast<int>(width*x),static_cast<int>(height*y),normed) {}
-    
-    pos(float x, float y, sz size, bool normed = 0)  : pos(static_cast<int>(size.width*x),static_cast<int>(size.height*y),normed) {}
 };

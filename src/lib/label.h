@@ -29,7 +29,7 @@ class label : public control
 
     void draw() override
     {
-        cli().setCursor(this->parent->position.x+position.x,this->parent->position.y+position.y);
+        cli::setCursor(this->parent->position.x+position.x,this->parent->position.y+position.y);
         print();
         std::cout << "\e[0m";//reset color
     }

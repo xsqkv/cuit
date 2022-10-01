@@ -8,9 +8,9 @@ class cchar
 {
     protected:
     std::string clr;
+    public:
     std::string str;
     
-    public:
     enum class style : char8_t
     {
         Bold = 1,
@@ -89,7 +89,7 @@ class cchar
         return strlen((char*)str.c_str());
     }
 
-    constexpr inline cchar() : clr(""), str("") {}
+    constexpr inline cchar() : clr(""), str("#") {}
 
     constexpr inline cchar(char ch,unsigned foreground=0, unsigned background=0, unsigned style=0)
     {

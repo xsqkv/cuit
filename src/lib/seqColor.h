@@ -5,8 +5,6 @@
 class rgb;
 #include "rgb.h"
 
-
-
 class seqColor
 {
     private:

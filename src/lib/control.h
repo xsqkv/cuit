@@ -26,20 +26,20 @@ class control
     void setPos(pos _pos)
     {
         position = _pos;
-        cli().clear();
+        cli::clear();
         if(visible)draw();
     }
 
     void setSize(sz s)
     {
         size = s;
-        cli().clear();
+        cli::clear();
         if(visible)draw();
     }
 
     control() 
     {
-        //parent->size = cli().getSz();
+        //parent->size = cli::getSz();
         //parent->position = {0,0};
     }
 };

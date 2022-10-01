@@ -10,9 +10,8 @@
 
 
 
-class cli final
+namespace cli
 {
-    public:
     bool cursorVisibility;
     int width;
     int height;
@@ -73,4 +72,23 @@ class cli final
         std::cout << "\e[" << y << ";" << x << "H" << str.c_str();
     }
 
+    inline const void up()
+    {
+        std::cerr << "\e[A";
+    }
+
+    inline const void down()
+    {
+        std::cerr << "\e[E";
+    }
+
+    inline const void right()
+    {
+        std::cerr << "\e[C";
+    }
+
+    inline const void left()
+    {
+        std::cerr << "\e[D";
+    }
 };

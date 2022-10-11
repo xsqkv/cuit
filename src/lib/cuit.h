@@ -5,7 +5,7 @@
 
 #include "button.h"
 #include "cchar.h"
-#include "cicrcle.h"
+#include "circle.h"
 #include "cli.h"
 #include "containerControl.h"
 #include "control.h"

@@ -1,6 +1,6 @@
+#pragma once
 #include <iostream>
 #include "lib/cuit.h"
-
 
 namespace bt
 {
@@ -37,51 +37,13 @@ namespace bt
     }
 }
 
-void draw()
-{
-    int x = 5, y = 5;
-    int w = 100, h = 100;
-
-    for(int X = x;X < x+w;X++)
-    {
-        for(int Y = y;Y < y+h;Y++)
-        {
-            cli::setChar(X,Y,'*');
-        }
-    }
-}
-
-void odraw()
-{
-    int x = 5, y = 5;
-    int w = 100, h = 100;
-
-    char sym = '*';
-    string str;
-
-    for(int X = 0;X < w; X++)
-    {
-        str += sym;
-    }
-
-    for(int Y = y;Y < y+h; Y++)
-    {
-        cli::setChar(x,Y,str);
-    }
-}
-
 int main(int argc,char** argv)
 {
     cli::clear();
-//
-    //circle c({5,5,1},{5,5,1},{"#",9},0);
-//
-    //c.paint();
-//
-    //getchar();
 
-    //debug::time(draw);
-    debug::time(odraw);
+    circle c({5,5,1},{5,5,1},{"*",9},0);
+
+    c.lj();
 
     return 0;
 }

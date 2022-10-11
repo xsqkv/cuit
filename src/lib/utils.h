@@ -74,16 +74,6 @@ inline char* upper(const char* x)
     return a;
 }
 
-inline constexpr float round(float x)
-{
-    return (int)(x + .51);
-}
-
-inline constexpr double round(double x)
-{
-    return (int)(x + .51);
-}
-
 inline constexpr std::string its(unsigned x)
 {
     if(x==0)return std::string("0");

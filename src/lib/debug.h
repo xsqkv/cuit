@@ -16,8 +16,8 @@ namespace debug
         auto end = system_clock::now();
 
         double time = static_cast<double>((end - start).count()) / 1000000.0;
-        cli::clear();
-        cerr << time << " ms\n";
+        
+        //cerr << time << " ms\n";
 
         return time;
     }

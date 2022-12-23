@@ -5,7 +5,8 @@
 class pos
 {
     public:
-    unsigned x,y;
+    unsigned x, y;
+    bool normed;
     
     enum place : char8_t
     {
@@ -24,15 +25,16 @@ class pos
     
     static constexpr float norm = 79.0/34.0; // pixel on pixel division
 
-    constexpr inline pos() : x(1),y(1) {}
+    constexpr inline pos() : x(1),y(1),normed(1) {}
 
-    constexpr inline pos(unsigned X, unsigned Y, bool normed)
+    constexpr inline pos(unsigned X, unsigned Y, bool Normed)
     {
-        //if(!x)x=1;
-        //if(!y)y=1;
-        if(normed) X *= norm;
-
-        x=X;
-        y=Y;
+        x = X ? X : 1;
+        y = Y ? Y : 1;
+        if(Normed){
+            X *= norm;
+            normed = 1;
+        }
+        else normed = 0;
     }
 };

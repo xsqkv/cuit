@@ -12,10 +12,7 @@ class shape
 
     constexpr inline virtual void draw() = 0;
 
-    inline shape() : size({5,5,1}) , ch{"#"}
-    {
-
-    }
+    inline shape() : size({5,5,1}) , ch("#") {}
 
     inline shape(sz SIZE, cchar CH)
     {

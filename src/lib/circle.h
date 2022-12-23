@@ -2,110 +2,63 @@
 #include "shape.h"
 #include "cli.h"
 
-#include<chrono>
-#include<thread>
-#include<cmath>
+#include <cmath>
 
 class circle : public shape
 {
-    constexpr inline void Plot8(int x,int y, int R)
+    constexpr inline void Plot8(int x, int y, int R)
     {
-
-        const int nx = R-x;
-        const int ny = R-y;
-
-        const int fx = x*norm;
-        const int fy = y*norm;
-
-        const int fnx = nx*norm;
-        const int fny = ny*norm;
-
-        cli::setChar(fny,nx,ch); // south
-        cli::setChar(fy ,nx,ch);
-        cli::setChar(fny,x ,ch);
-        cli::setChar(fy ,x ,ch);
-        cli::setChar(fnx,ny,ch);
-        cli::setChar(fx ,ny,ch);
-        cli::setChar(fnx,y ,ch);
-        cli::setChar(fx ,y ,ch);
+        const int nx = R - x;
+        const int ny = R - y;
+        const int fx = size.normed ? x * norm : x;    // make spaces
+        const int fy = size.normed ? y * norm : y;    // make spaces
+        const int fnx = size.normed ? nx * norm : nx; // make spaces
+        const int fny = size.normed ? ny * norm : ny; // make spaces
+        cli::setChar(fny + position.x, nx + position.y, ch);
+        cli::setChar(fy + position.x, nx + position.y, ch);
+        cli::setChar(fny + position.x, x + position.y, ch);
+        cli::setChar(fy + position.x, x + position.y, ch);
+        cli::setChar(fnx + position.x, ny + position.y, ch);
+        cli::setChar(fx + position.x, ny + position.y, ch);
+        cli::setChar(fnx + position.x, y + position.y, ch);
+        cli::setChar(fx + position.x, y + position.y, ch);
     }
 
-    public:
-
+public:
     int f;
-
-    static constexpr double norm = 79.0/34.0; // pixel on pixel division
+    static constexpr float norm = 79.0 / 34.0; // pixel on pixel division
 
     constexpr inline void draw() override
     {
-        int x = position.x;
-        int y = position.y;
+        constexpr float R = 20; //* 1.5;// 25 - cube // position of quarter
+        constexpr float rq = R / 2;
 
-        int w = size.width;
-        int h = size.height;
+        float x = 0;
+        float y = rq;     // size
+        float D = R - 50; // - 6 * R; // circulisity
 
-        for(int X = x;X < x+w;X++)
+        while (x <= y)
         {
-            for(int Y = y;Y < y+h;Y++)
-            {
-                cli::setChar(X,Y,ch);
-            }
+            Plot8(rq + x, rq + y, R);
+            D += x++ * 8;
+            if(D >= 0) D -= --y * 8;
         }
     }
 
     constexpr inline void simple()
     {
-        int radius = 10;
+        const int R = 10;
         int xCenter = 20;
         int yCenter = 20;
-        
-        int r2 = radius * radius;
 
-        for (int x = -radius; x <= radius; x++)
+        constexpr int r2 = R * R;
+
+        for (int x = -R; x <= R; x++)
         {
             int X = (xCenter + x) * norm;
             int y = static_cast<int>(sqrt(r2 - x * x) + 0.5);
-            cli::setChar(X, yCenter + y,ch);// reduce to single function
-            cli::setChar(X, yCenter - y,ch);
-        }
-    }
-
-    constexpr inline void lj()
-    {
-        const double Q = 0.7;
-        const int R = 25;// 25 - cube // position of quarter
-        const int rq = R * Q;
-
-        int x = 0;
-        int y = R * Q;// size
-        int D = -50;// - 6 * R; // circulisity
-
-        while (x <= y)
-        {
-            Plot8(rq + x, rq + y, R * 1.5);
-            D += 8 * x + 4;
-            if (D >= 0)
-            {
-                D -= 8 * --y;
-            }
-            ++x;
-        }
-    }
-
-    constexpr inline void fill()
-    {
-        int radius = 10;
-        int xCenter = 20;
-        int yCenter = 20;
-        
-        int r2 = radius * radius;
-
-        for (int x = -radius; x < 0; x++)
-        {
-            int X = (xCenter + x) * norm;
-            int y = static_cast<int>(sqrt(r2 - x * x) + 0.5);
-            cli::setChar(X, yCenter + y,ch);
-            cli::setChar(X, yCenter - y,ch);
+            cli::setChar(X, yCenter + y, ch); // reduce to single function
+            cli::setChar(X, yCenter - y, ch);
         }
     }
 

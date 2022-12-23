@@ -42,7 +42,7 @@ class window : public containerControl
                     cli::setChar(x, y, settings.fill);
                 }
             }
-            std::cout << "\e[m";
+            printf("\e[m");
             for(unsigned x=lx+1;x<fx;x++)cli::setChar(x,ly,settings.topBar);
             for(unsigned y=ly+1;y<fy;y++)cli::setChar(lx,y,settings.leftBar);
             for(unsigned x=lx+1;x<fx;x++)cli::setChar(x,fy,settings.downBar);
@@ -227,10 +227,10 @@ class window : public containerControl
         } 
         else
         {
-            std::cout<<"format error"<<"\n";
+            printf("format error\n");
         }
         
-        std::cout << "\e[m"; //Reset color
+        printf("\e[m"); //Reset color
     }
 
     void hide()

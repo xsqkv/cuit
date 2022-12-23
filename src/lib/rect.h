@@ -12,19 +12,13 @@ class rect : public shape
 
         char sym = ch.str.c_str()[0];
 
-        for(int x = 1;x < size.width; x++)
-        {
-            ch.str += sym;
-        }
+        for(int x = 1;x < size.width; ++x) ch.str += sym;
 
         char* str = ch.getStr();
 
-        std::cerr << clr;
+        printf("%s",clr);
 
-        for(int y = 0;y < size.height; y++)
-        {
-            cli::setChar(size.width,y+5,str);
-        }
+        for(int y = 0;y < size.height; ++y) cli::setText(size.width,y+5,str);
     }
 
     inline rect() : shape() {}

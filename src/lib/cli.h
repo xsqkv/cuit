@@ -8,8 +8,6 @@
 #include "sz.h"
 #include "cchar.h"
 
-
-
 namespace cli
 {
     bool cursorVisibility;
@@ -32,63 +30,63 @@ namespace cli
 
     inline void clear()
     {
-        std::cout << "\ec";
+        printf("\ec");
     }
 
     inline void hideCursor()
     {
-        std::cout << "\e[?25l";
+        printf("\e[?25l");
         cursorVisibility = 0;
     }
 
     inline void showCursor()
     {
-        std::cout << "\e[?25h";
+        printf("\e[?25h");
         cursorVisibility = 1;
     }
 
     inline void setCursor(unsigned x, unsigned y)
     {
-        std::cout << "\e[" << y << ";" << x << "H";
+        printf("\e[%d;%dH",y,x);
     }
 
     inline void setChar(unsigned x, unsigned y, char* pchr)
     {
-        std::cout << "\e[" << y << ";" << x << "H" << pchr;
+        printf("\e[%d;%dH%s",y,x,pchr);
     }
 
-    inline void setChar(unsigned x, unsigned y, const char* pchr)
+    inline void setText(unsigned x, unsigned y, const char* str)
     {
-        std::cout << "\e[" << y << ";" << x << "H" << pchr;
+         printf("\e[%d;%dH%s",y,x,str);
     }
 
-    inline const void setChar(unsigned x, unsigned y, cchar pchr)
+    inline const void setChar(unsigned x, unsigned y, cchar pchr) noexcept(true)
     {
-        std::cout << "\e[" << y << ";" << x << "H" << pchr.getClr() << pchr.getStr();
+        printf("\e[%d;%dH%s%s",y,x,pchr.getClr(), pchr.getStr());
     }
 
-    inline const void setChar(unsigned x, unsigned y, std::string str)
+    inline const void setText(unsigned x, unsigned y, std::string str) noexcept(true)
     {
-        std::cout << "\e[" << y << ";" << x << "H" << str.c_str();
+        printf("\e[%d;%dH%s",y,x,str.c_str());
     }
 
     inline const void up()
     {
-        std::cerr << "\e[A";
+        printf("\e[A");
     }
 
     inline const void down()
     {
-        std::cerr << "\e[E";
+       printf("\e[E");
     }
 
     inline const void right()
     {
-        std::cerr << "\e[C";
+        printf("\e[C");
     }
 
     inline const void left()
     {
-        std::cerr << "\e[D";
+        printf("\e[D");
     }
 };

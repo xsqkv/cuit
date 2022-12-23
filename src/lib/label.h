@@ -18,10 +18,10 @@ class label : public control
         int dst = parent->size.width+overwriteBorders;
         if(src>dst)return;
         char* c = text.getStr();
-        std::cout << text.getClr();
+        printf(text.getClr());
         while(src != dst)
         {
-            std::cout << *c;
+            printf("%s",*c);
             c++;
             src++;
         }
@@ -31,7 +31,7 @@ class label : public control
     {
         cli::setCursor(this->parent->position.x+position.x,this->parent->position.y+position.y);
         print();
-        std::cout << "\e[0m";//reset color
+        printf("\e[0m");//reset color
     }
     
     void setText(cchar str)

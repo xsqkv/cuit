@@ -39,11 +39,18 @@ namespace bt
 
 int main(int argc,char** argv)
 {
+    //ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    cerr.tie(nullptr);
+    clog.tie(nullptr);
+
     cli::clear();
 
-    circle c({5,5,1},{5,5,1},{"*",9},0);
+    circle c({3,3,0},{20,0,1},{"#",10},0);
 
-    c.lj();
+    //for(uint8_t i = 0;i < 255;++i)
+        c.draw();
 
     return 0;
 }

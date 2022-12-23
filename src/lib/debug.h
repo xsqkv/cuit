@@ -9,7 +9,8 @@ using namespace chrono;
 
 namespace debug
 {
-    constexpr inline double time(void a())
+    template<class t>
+    constexpr inline double time(t a(...)) noexcept(true)
     {
         auto start = system_clock::now();
         a();
@@ -22,26 +23,27 @@ namespace debug
         return time;
     }
 
-    constexpr inline void compare(void a(), void b())
+    template<class t>
+    constexpr inline void compare(t a(...), t b(...)) noexcept(true)
     {
         //Function 1
-        cerr << "Function 1: " << time(a);
+        printf("Function 1: ", time(a));
         //Function 2
-        cerr << " ms\tFunction 2: " << time(b) << " ms\n";
+        printf(" ms\tFunction 2: ",time(b), " ms\n");
     }
 
-    constexpr inline void var_test()
+    constexpr inline void var_test() noexcept(true)
     {
-        cerr << "       char: " << sizeof(char) << " bytes\n";
-        cerr << "    wchar_t: " << sizeof(wchar_t) << " bytes\n";
-        cerr << '\n';
-        cerr << "      short: " << sizeof(short) << " bytes\n";
-        cerr << "        int: " << sizeof(int) << " bytes\n";
-        cerr << "       long: " << sizeof(long) << " bytes\n";
-        cerr << "  long long: " << sizeof(long long) << " bytes\n";
-        cerr << '\n';
-        cerr << "      float: " << sizeof(float) << " bytes\n";
-        cerr << "     double: " << sizeof(double) << " bytes\n";
-        cerr << "long double: " << sizeof(long double) << " bytes\n\n";
+        printf("       char: %d bytes\n",sizeof(char));
+        printf("    wchar_t: %d bytes\n",sizeof(wchar_t));
+        printf("\n");
+        printf("      short: %d bytes\n",sizeof(short));
+        printf("        int: %d bytes\n",sizeof(int));
+        printf("       long: %d bytes\n",sizeof(long));
+        printf("  long long: %d bytes\n",sizeof(long long));
+        printf("\n");
+        printf("      float: %d bytes\n",sizeof(float));
+        printf("     double: %d bytes\n",sizeof(double));
+        printf("long double: %d bytes\n\n",sizeof(long double));
     }
 }

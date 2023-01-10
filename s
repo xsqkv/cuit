@@ -1,9 +1,0 @@
-clang++\
- -std=c++20\
- -O3\
- -Wno-everything\
- src/test.cpp\
- -o\
- test\
- &&\
- ./test

@@ -25,6 +25,12 @@ Constrols:
     tool_strip - 
     status_strip - 
 
+Prepared controls(forms)
+    color picker
+    file picker
+    message box
+
+
 What need to do too:
     Anchor
     Autocomplete

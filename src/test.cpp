@@ -1,5 +1,9 @@
-#pragma once
+//+==================================+
+//| Just a test for current features |
+//+==================================+
+
 #include <iostream>
+
 #include "lib/cuit.h"
 
 namespace bt
@@ -47,10 +51,17 @@ int main(int argc,char** argv)
 
     cli::clear();
 
-    circle c({3,3,0},{20,0,1},{"#",10},0);
+    window w({20,15,1},{5,5,1});
 
-    //for(uint8_t i = 0;i < 255;++i)
-        c.draw();
+    label l(cchar("label",10,0,0));
+    
+    l.position = {0,0,0};
+
+    w.settings.fill = ".";
+
+    w.add(&l);
+
+    w.show();
 
     return 0;
 }

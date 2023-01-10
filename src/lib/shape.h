@@ -23,6 +23,6 @@ class shape
     inline shape(int w, int h, cchar CH)
     {
         ch = CH;
-        size = {w,h};
+        size = sz(w,h);
     }
 };

@@ -32,18 +32,18 @@ namespace debug
         printf(" ms\tFunction 2: ",time(b), " ms\n");
     }
 
-    constexpr inline void var_test() noexcept(true)
+    inline void var_test() noexcept(true)
     {
-        printf("       char: %d bytes\n",sizeof(char));
-        printf("    wchar_t: %d bytes\n",sizeof(wchar_t));
+        printf("       char: %lu bytes\n",sizeof(char));
+        printf("    wchar_t: %lu bytes\n",sizeof(wchar_t));
         printf("\n");
-        printf("      short: %d bytes\n",sizeof(short));
-        printf("        int: %d bytes\n",sizeof(int));
-        printf("       long: %d bytes\n",sizeof(long));
-        printf("  long long: %d bytes\n",sizeof(long long));
+        printf("      short: %lu bytes\n",sizeof(short));
+        printf("        int: %lu bytes\n",sizeof(int));
+        printf("       long: %lu bytes\n",sizeof(long));
+        printf("  long long: %lu bytes\n",sizeof(long long));
         printf("\n");
-        printf("      float: %d bytes\n",sizeof(float));
-        printf("     double: %d bytes\n",sizeof(double));
-        printf("long double: %d bytes\n\n",sizeof(long double));
+        printf("      float: %lu bytes\n",sizeof(float));
+        printf("     double: %lu bytes\n",sizeof(double));
+        printf("long double: %lu bytes\n\n",sizeof(long double));
     }
 }

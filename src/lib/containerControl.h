@@ -1,17 +1,19 @@
 #pragma once
+#include<vector>
 
 #include "control.h"
-#include "controls.h"
-
 
 
 class containerControl : public control
 {
     public:
-    controls elements;
+    std::vector<control*> elements;
 
-    containerControl() : control() 
-    {
-        elements.parent = this->parent;
+    void add(control* ctrl)
+    {   
+        ctrl->parent = this;
+        elements.push_back(ctrl);
     }
+
+    containerControl() : control() {}
 };

@@ -25,7 +25,7 @@ class rect : public shape
 
     inline rect(int w,int h) : rect()
     {
-        size = {w,h};
+        size = sz(w,h);
     }
 
     inline rect(sz SIZE) : rect()
@@ -35,7 +35,7 @@ class rect : public shape
 
     inline rect(int W,int H,cchar CH)
     {
-        size = {W,H};
+        size = sz(W,H);
         ch = CH;
     }
 

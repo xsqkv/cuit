@@ -32,7 +32,7 @@ class pos
         x = X ? X : 1;
         y = Y ? Y : 1;
         if(Normed){
-            X *= norm;
+            x *= norm;
             normed = 1;
         }
         else normed = 0;

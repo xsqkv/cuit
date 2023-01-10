@@ -2,7 +2,6 @@
 
 #include "control.h"
 
-
 class label : public control
 {
     cchar text;
@@ -16,21 +15,15 @@ class label : public control
     {
         int src = position.x;
         int dst = parent->size.width+overwriteBorders;
-        if(src>dst)return;
-        char* c = text.getStr();
+        if(src > dst) return;
         printf(text.getClr());
-        while(src != dst)
-        {
-            printf("%s",*c);
-            c++;
-            src++;
-        }
+        for(char& ch : text.str) { printf("%c",ch); }
     }
 
     void draw() override
     {
-        cli::setCursor(this->parent->position.x+position.x,this->parent->position.y+position.y);
-        print();
+        cli::setText(parent->position.x + position.x, parent->position.y + position.y, text.str);
+        //print();
         printf("\e[0m");//reset color
     }
     

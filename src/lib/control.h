@@ -5,7 +5,6 @@
 #include "cli.h"
 
 
-
 class control
 {
     public:
@@ -17,11 +16,9 @@ class control
     sz size;
     pos position;
     control* parent;
+    control* child;
     
-    virtual void draw()
-    {
-
-    }
+    virtual void draw() {}
 
     void setPos(pos _pos)
     {
@@ -34,7 +31,7 @@ class control
     {
         size = s;
         cli::clear();
-        if(visible)draw();
+        if(visible) draw();
     }
 
     control() 

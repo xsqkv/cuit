@@ -6,69 +6,110 @@
 
 class circle : public shape
 {
+    constexpr inline void drawPixel(int x ,int y, cchar chr)
+    {
+        if(size.normed){
+            cli::setChar(x + position.x, y * fy + position.y, chr);
+        }else{
+            cli::setChar(x + position.x, y * fy + position.y, chr);
+        }
+    }
+
     constexpr inline void Plot8(int x, int y, int R)
     {
         const int nx = R - x;
         const int ny = R - y;
-        const int fx = size.normed ? x * norm : x;    // make spaces
-        const int fy = size.normed ? y * norm : y;    // make spaces
-        const int fnx = size.normed ? nx * norm : nx; // make spaces
-        const int fny = size.normed ? ny * norm : ny; // make spaces
-        cli::setChar(fny + position.x, nx + position.y, ch);
-        cli::setChar(fy + position.x, nx + position.y, ch);
-        cli::setChar(fny + position.x, x + position.y, ch);
-        cli::setChar(fy + position.x, x + position.y, ch);
-        cli::setChar(fnx + position.x, ny + position.y, ch);
-        cli::setChar(fx + position.x, ny + position.y, ch);
-        cli::setChar(fnx + position.x, y + position.y, ch);
-        cli::setChar(fx + position.x, y + position.y, ch);
+        drawPixel(ny, nx, ch);
+        drawPixel(y , nx, ch);
+        drawPixel(ny, x , ch);
+        drawPixel(y , x , ch);
+        drawPixel(nx, ny, ch);
+        drawPixel(x , ny, ch);
+        drawPixel(nx, y , ch);
+        drawPixel(x , y , ch);
     }
 
-public:
-    int f;
-    static constexpr float norm = 79.0 / 34.0; // pixel on pixel division
-
-    constexpr inline void draw() override
+    constexpr inline void Plot4(int x, int y, int R)
     {
-        constexpr float R = 20; //* 1.5;// 25 - cube // position of quarter
-        constexpr float rq = R / 2;
+        const int nx = R - x;
+        const int ny = R - y;
+        drawPixel(ny, nx, ch);
+        //drawPixel(y , nx, ch);
+        drawPixel(ny, x , ch);
+        //drawPixel(y , x , ch);
+        drawPixel(nx, ny, ch);
+        //drawPixel(x , ny, ch);
+        drawPixel(nx, y , ch);
+        //drawPixel(x , y , ch);
+    }
 
-        float x = 0;
-        float y = rq;     // size
-        float D = R - 50; // - 6 * R; // circulisity
+    constexpr inline void filled()
+    {
+        int R = size.width; // Radius
+        float rq = R / 2.0;
+
+        int x = 0;
+        int y = rq; // circle length
+        float D = -R * 2; // circulisity
+
+        while (x <= y)
+        {
+            Plot4(rq + x, rq + y, R);
+            D += ++x << 3;
+            if(D >= 0) 
+            {
+                D -= --y << 3;
+            }
+        }
+    }
+
+    constexpr inline void empty()
+    {
+        int R = size.width; // Radius
+        float rq = R / 2.0;
+
+        int x = 0;
+        int y = rq; // circle length
+        float D = -R * 2; // circulisity
 
         while (x <= y)
         {
             Plot8(rq + x, rq + y, R);
-            D += x++ * 8;
-            if(D >= 0) D -= --y * 8;
+            D += ++x << 3;
+            if(D >= 0) 
+            {
+                D -= --y << 3;
+            }
         }
     }
 
-    constexpr inline void simple()
+    float fy;
+    bool is_filled;
+
+    public:
+    static constexpr float norm = 79.0 / 34.0; // pixel on pixel division
+
+    constexpr inline void draw() override
     {
-        const int R = 10;
-        int xCenter = 20;
-        int yCenter = 20;
-
-        constexpr int r2 = R * R;
-
-        for (int x = -R; x <= R; x++)
-        {
-            int X = (xCenter + x) * norm;
-            int y = static_cast<int>(sqrt(r2 - x * x) + 0.5);
-            cli::setChar(X, yCenter + y, ch); // reduce to single function
-            cli::setChar(X, yCenter - y, ch);
-        }
+        is_filled ? filled() : empty(); 
     }
 
-    inline circle() : shape() {}
+    inline circle() : shape() { fy = (float)size.height / (float)size.width; }
 
-    inline circle(sz SZ, pos POS, cchar CH, int n)
+    inline circle(sz SZ, pos POS, bool Filled = 0)
     {
         size = SZ;
+        fy = (float)size.height / (float)size.width;
+        position = POS;
+        is_filled = Filled;
+    }
+
+    inline circle(sz SZ, pos POS, cchar CH, bool Filled = 0)
+    {
+        size = SZ;
+        fy = (float)size.height / (float)size.width;
         position = POS;
         ch = CH;
-        f = n;
+        is_filled = Filled;
     }
 };

@@ -225,39 +225,49 @@ class window : public containerControl
             }
             return;
         } 
-        else
-        {
-            printf("format error\n");
-        }
+        else printf("format error\n");
         
         printf("\e[m"); //Reset color
     }
 
     void hide()
     {
-        visible = 0;
-        cli::clear();
+        visible = 0; // set hidden flag
+        cli::clear(); // clear all term buff
     }
 
     void show()
     {
         visible = 1;
         draw();
-        int controls = elements.getSize();
-        for(int i=0;i < controls;i++)
-        {
-            elements.get(i)->draw();//call base class method
-        }
+        for(control*& ctrl : elements) { ctrl->draw(); }
     }
 
     window() : containerControl() 
     {
-        elements.parent = this;
+        //elements.push_back();
     }
 
     window(unsigned width, unsigned height,bool normed=0) : window()
     {
         size = sz(width,height,normed);
         draw();
+    }
+
+    window(unsigned width, unsigned height, bool size_normed, unsigned pos_x, unsigned pos_y, bool pos_normed) : window()
+    {
+        size = sz(width,height,size_normed);
+        position = pos(pos_x,pos_y,pos_normed);
+    }
+
+    window(sz SIZE) : window()
+    {
+        size = SIZE;
+    }
+
+    window(sz SIZE, pos POSITION) : window()
+    {
+        size = SIZE;
+        position = POSITION;
     }
 };

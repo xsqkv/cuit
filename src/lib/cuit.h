@@ -1,6 +1,5 @@
-/*
-    THIS HEADER FILE - IS COMPILATION OF ALL LIBRARIES
-*/
+// compilation of all libraries
+
 #pragma once
 
 #include "button.h"

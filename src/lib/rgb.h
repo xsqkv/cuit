@@ -1,3 +1,5 @@
+// rgb color area class file
+
 #pragma once
 
 #include<iostream>

@@ -1,3 +1,5 @@
+// rectangle shape class control
+
 #pragma once
 #include "shape.h"
 #include "cli.h"

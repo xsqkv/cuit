@@ -1,3 +1,5 @@
+// pseudo graphics enumeration class file 
+
 #pragma once
 
 class pseudoGraphics

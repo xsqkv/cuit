@@ -1,3 +1,5 @@
+// shape class file
+
 #pragma once
 #include "sz.h"
 #include "cchar.h"

@@ -1,3 +1,5 @@
+// window settings class file
+
 #pragma once
 
 #include "cchar.h"

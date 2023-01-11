@@ -1,3 +1,5 @@
+// size class file
+
 #pragma once
 
 class sz

@@ -1,3 +1,5 @@
+// terminal sequence color class file
+
 #pragma once
 
 #include<iostream>

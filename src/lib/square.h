@@ -1,3 +1,5 @@
+// square class file
+
 #pragma once
 #include "cchar.h"
 #include "pos.h"

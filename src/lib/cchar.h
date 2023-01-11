@@ -1,3 +1,5 @@
+// console char class file
+
 #pragma once
 
 #include<iostream>

@@ -1,3 +1,5 @@
+// window container control class file
+
 #pragma once
 
 #include<iostream>

@@ -1,3 +1,5 @@
+// control class file
+
 #pragma once
 
 #include "sz.h"

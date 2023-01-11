@@ -1,3 +1,5 @@
+// label control class file
+
 #pragma once
 
 #include "control.h"

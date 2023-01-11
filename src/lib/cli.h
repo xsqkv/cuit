@@ -1,3 +1,5 @@
+// console line interface namespace file
+
 #pragma once
 
 #include<iostream>

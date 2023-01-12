@@ -44,10 +44,8 @@ function main()
     compile_tests; # COMPILING TESTS
 
     # COMPILING LIBS
-
         # COMPILING .so FILES
-
-
+            
         # COMPILING .a FILES
 }
 

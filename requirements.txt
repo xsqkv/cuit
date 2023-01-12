@@ -1,0 +1,2 @@
+Language: C++
+Standart: ISO C++ 20

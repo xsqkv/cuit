@@ -25,9 +25,9 @@ class window : public containerControl
         unsigned ly = this->position.y;
 
         //position of end of window x
-        unsigned fx = lx+this->size.width;
+        unsigned fx = lx + this->size.width;
         //position of end of window y
-        unsigned fy = ly+this->size.height;
+        unsigned fy = ly + this->size.height;
 
         std::string cur = "";
 

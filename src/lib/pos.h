@@ -10,9 +10,9 @@ class pos
     unsigned x, y;
     bool normed;
     
-    enum place : char8_t
+    enum class place : char8_t
     {
-         TOP_LEFT,      TOP_CENTER,      TOP_RIGHT,
+         TOP_LEFT,      TOP_MIDDLE,      TOP_RIGHT,
 
 
 
@@ -22,18 +22,17 @@ class pos
 
 
 
-        BOTTOM_LEFT,   BOTTOM_CENTER,   BOTTOM_RIGHT
+        BOTTOM_LEFT,   BOTTOM_MIDDLE,   BOTTOM_RIGHT
     };
     
     static constexpr float norm = 79.0/34.0; // pixel on pixel division
 
     constexpr inline pos() : x(1),y(1),normed(1) {}
 
-    constexpr inline pos(unsigned X, unsigned Y, bool Normed)
+    constexpr inline pos(unsigned X, unsigned Y, bool Normed) : x(X), y(Y)
     {
-        x = X ? X : 1;
-        y = Y ? Y : 1;
-        if(Normed){
+        if(Normed)
+        {
             x *= norm;
             normed = 1;
         }

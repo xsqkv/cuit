@@ -11,10 +11,20 @@ class containerControl : public control
     public:
     std::vector<control*> elements;
 
-    void add(control* ctrl)
+    void inline addControl(control& ctrl) noexcept
     {   
-        ctrl->parent = this;
-        elements.push_back(ctrl);
+        ctrl.parent = this;
+        elements.push_back(&ctrl);
+    }
+
+    void inline removeControl(control& ctrl) noexcept
+    {
+        delete &ctrl;
+    }
+
+    inline size_t Controls() noexcept
+    {
+        return elements.size();
     }
 
     containerControl() : control() {}

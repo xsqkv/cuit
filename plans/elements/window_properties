@@ -1,0 +1,28 @@
+size = 50x40
+position = 10x25
+style = rounded/rectangled/solid/bordered
+has_title?
+title = {
+    text
+    showEffect = {
+        typing 
+        "decrypt"
+        }
+    style = {
+     rainbow
+     running line
+     }
+    align
+top_most?
+margin
+anchor
+focused?
+settings = {
+    fillChar = (color style = bg color fg color)
+    vborderChar = (color style = bg color fg color)
+    hborderChar = (color style = bg color fg color)
+    corners chars 4x = (color style = bg color fg color)
+    }
+visible?
+sizable?
+panel

@@ -1,0 +1,40 @@
+Constrols:
+    window - окно
+    label - надпись
+    button - кнопка
+              ┌─────────┐
+    textbox - │ textbox │
+              └─────────┘
+    checkbox - [x]
+    radiobutton - ○ - off ◉ - on
+    progressbar - █████████████████
+    trackbar - ───────█────────
+    numeric_up_down - выбор числа по средством нажатия вверх или вниз
+    groupbox - объединение интерфейса в группы
+    date_time_picker - выбор даты и времени
+    listbox - просто список
+    combobox - выпадающий список
+    listview - список со столбцами
+    checklistbox - список с чек-боксами
+    treeview - список дерева
+    picturebox - картинка
+    tabstrip - 
+    panel - панель
+    imagelist - 
+    notify_icon - 
+    tool_strip - 
+    status_strip - 
+
+Prepared controls(forms)
+    color picker
+    file picker
+    message box
+
+
+What need to do too:
+    Anchor
+    Autocomplete
+    Password char and Mask for textbox
+    Hide on leave mask char for textbox
+    Promptchar for textbox
+    

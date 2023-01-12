@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-#include "lib/cuit.h"
+#include "../lib/cuit.h"
 
 namespace bt
 {
@@ -55,13 +55,16 @@ int main(int argc,char** argv)
 
     label l(cchar("label",10,0,0));
     
-    l.position = {0,0,0};
+    l.position = {1,1,0};
 
     w.settings.fill = ".";
 
-    w.add(&l);
+    w.addControl(l);
+    //w.addControl(l);
+    for(int i=0;i<1000;++i)
+        w.show();
 
-    w.show();
+    //getchar();
 
     return 0;
 }

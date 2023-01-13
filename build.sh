@@ -121,9 +121,9 @@ function compile_shared_objects()
 function main() 
 {
     compile_tests; # COMPILING TESTS
-    compile_objects; # COMPILING .o FILES
-    compile_archives; # COMPILING .a FILES
-    compile_shared_objects; # COMPILING .so FILES
+    #compile_objects; # COMPILING .o FILES
+    #compile_archives; # COMPILING .a FILES
+    #compile_shared_objects; # COMPILING .so FILES
 }
 
 time main;

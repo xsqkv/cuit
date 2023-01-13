@@ -3,6 +3,7 @@
 #pragma once
 
 #include<iostream>
+#include<cmath>
 
 #include "hsv.h"
 #include "utils.h"

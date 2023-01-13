@@ -4,7 +4,6 @@
 
 #include<iostream>
 
-class rgb;
 #include "rgb.h"
 
 class seqColor
@@ -34,6 +33,8 @@ class seqColor
    public:
    uint8_t color;
 
+   inline constexpr seqColor() : color(0) {}
+   
    inline constexpr void print()
    {
       printf("%d\n",color);
@@ -45,11 +46,6 @@ class seqColor
       rgb2seq(g);
       rgb2seq(b);
       color = (36*r)+(6*g)+b+16;
-   }
-
-   inline constexpr void fromRGB(rgb &x)
-   {
-      fromRGB(x.r,x.g,x.b);
    }
 
    inline constexpr void toRGB(uint8_t &r,uint8_t &g,uint8_t &b)
@@ -71,13 +67,6 @@ class seqColor
       seq2rgb(b);
    }
 
-   inline constexpr void toRGB(rgb& x)
-   {
-      return toRGB(x.r,x.g,x.b);
-   }
-
-   inline constexpr seqColor() : color(0) {}
-
    inline constexpr seqColor(uint8_t Color)
    {
       color = Color;
@@ -88,8 +77,4 @@ class seqColor
       fromRGB(r,g,b);
    }
 
-   inline constexpr seqColor(rgb RGB)
-   {
-      fromRGB(RGB);
-   }
 };

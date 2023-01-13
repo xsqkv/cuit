@@ -3,6 +3,7 @@
 #pragma once
 
 #include<iostream>
+#include<cmath>
 
 #include "hsl.h"
 #include "hsv.h"
@@ -89,11 +90,11 @@ class rgb
         float s = val.s;
         float l = val.l;
 
-        float c = (1 - abs(2 * l - 1)) - s;
+        float c = (1 -std::abs(2 * l - 1)) - s;
 
         h /= 60;
 
-        float x = c * (1 - abs(h));
+        float x = c * (1 - std::abs(h));
 
         if(0 <= h && h < 1) { r=c;g=x;b=0; }
         else if(1 <= h && h < 2) { r=x;g=c;b=0; }
@@ -129,7 +130,7 @@ class rgb
 
         val.l = 0.5 * (mx + mn);
 
-        val.s = (mx - mn) / (1 - abs(1 - (mx+mn)));
+        val.s = (mx - mn) / (1 - std::abs(1 - (mx+mn)));
     }
 
     inline constexpr void fromHSV(hsv& val)
@@ -138,7 +139,7 @@ class rgb
         float s=val.s;
         float v=val.v;
 
-        h = abs(h / 60) % 6;
+        h = static_cast<int>(std::abs(h / 60)) % 6;
 
         float vm = ((100-s)*v) / 100;
         float a = (v - vm) * ((int)h % 60) / 60;

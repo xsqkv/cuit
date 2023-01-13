@@ -17,6 +17,7 @@ function check_dirs()
     if [ ! -d "build/tests" ]; then mkdir build/tests; fi # CHECKING build/tests FOLDER
     if [ ! -d "build/lib" ]; then mkdir build/lib; fi # CHECKING build/lib FOLDER
     if [ ! -d "build/lib/so" ]; then mkdir build/lib/so; fi # CHECKING build/lib/so FOLDER
+    if [ ! -d "build/lib/o" ]; then mkdir build/lib/so; fi # CHECKING build/lib/so FOLDER
     if [ ! -d "build/lib/a" ]; then mkdir build/lib/a; fi # CHECKING build/lib/a FOLDER
 }
 

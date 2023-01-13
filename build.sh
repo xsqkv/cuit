@@ -23,19 +23,13 @@ function ERRORS()
     printf "\e[01;38;05;1m%s\e[0m\n\n" "An Errors Occurred!";
 }
 
-function check_dirs()
-{
-    # CHECKING DIRS
-    if [ ! -d "build" ]; then mkdir build; fi # CHECKING build FOLDER
-    if [ ! -d "build/tests" ]; then mkdir build/tests; fi # CHECKING build/tests FOLDER
-    if [ ! -d "build/lib" ]; then mkdir build/lib; fi # CHECKING build/lib FOLDER
-    if [ ! -d "build/lib/so" ]; then mkdir build/lib/so; fi # CHECKING build/lib/so FOLDER
-    if [ ! -d "build/lib/o" ]; then mkdir build/lib/o; fi # CHECKING build/lib/so FOLDER
-    if [ ! -d "build/lib/a" ]; then mkdir build/lib/a; fi # CHECKING build/lib/a FOLDER
-}
-
 function compile_tests()
 {
+    # CHECKING build FOLDER
+    if [ ! -d "build" ]; then mkdir build; fi 
+    # CHECKING build/tests FOLDER
+    if [ ! -d "build/tests" ]; then mkdir build/tests; fi 
+
     # COMPILING TESTS
     for FILE in $TESTS;
     do
@@ -55,6 +49,12 @@ function compile_tests()
 
 function compile_objects()
 {
+    # CHECKING build/lib FOLDER
+    if [ ! -d "build/lib" ]; then mkdir build/lib; fi
+
+    # CHECKING build/lib/o FOLDER
+    if [ ! -d "build/lib/o" ]; then mkdir build/lib/o; fi
+    
     # COMPILING OBJECTS
     for LIB in $LIBS;
     do
@@ -74,6 +74,9 @@ function compile_objects()
 
 function compile_archives()
 {
+    # CHECKING build/lib/a FOLDER
+    if [ ! -d "build/lib/a" ]; then mkdir build/lib/a; fi 
+
     # GETTING OBJECTS IN *.o FORMAT
     OBJECTS=$(ls build/lib/o); 
 
@@ -94,6 +97,9 @@ function compile_archives()
 
 function compile_shared_objects()
 {
+    # CHECKING build/lib/so FOLDER
+    if [ ! -d "build/lib/so" ]; then mkdir build/lib/so; fi
+
     # COMPILING STATIC LIBRARIES
     for LIB in $LIBS;
     do
@@ -114,11 +120,10 @@ function compile_shared_objects()
 
 function main() 
 {
-    check_dirs; # CHECKING DIRS
     compile_tests; # COMPILING TESTS
-    #compile_objects; # COMPILING .o FILES
-    #compile_archives; # COMPILING .a FILES
-    #compile_shared_objects; # COMPILING .so FILES
+    compile_objects; # COMPILING .o FILES
+    compile_archives; # COMPILING .a FILES
+    compile_shared_objects; # COMPILING .so FILES
 }
 
 time main;

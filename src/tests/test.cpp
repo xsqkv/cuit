@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-#include "../lib/cuit.h"
+#include "../lib/cuit.hpp"
 
 int main(int argc,char** argv)
 {

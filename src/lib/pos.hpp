@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "sz.h"
+#include "sz.hpp"
 
 class pos
 {

@@ -1,9 +1,9 @@
 // shape class file
 
 #pragma once
-#include "sz.h"
-#include "cchar.h"
-#include "pos.h"
+#include "sz.hpp"
+#include "cchar.hpp"
+#include "pos.hpp"
 
 class shape
 {

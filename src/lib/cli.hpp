@@ -7,8 +7,8 @@
 #include <unistd.h> //STDOUT_FILENO in cli::getSize()
 #include <sys/ioctl.h> // ioctl // TIOCGWINSZ
 
-#include "sz.h"
-#include "cchar.h"
+#include "sz.hpp"
+#include "cchar.hpp"
 
 namespace cli
 {

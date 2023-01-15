@@ -1,8 +1,8 @@
 // circle shape class file
 
 #pragma once
-#include "shape.h"
-#include "cli.h"
+#include "shape.hpp"
+#include "cli.hpp"
 
 #include <cmath>
 

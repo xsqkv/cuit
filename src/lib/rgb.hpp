@@ -5,10 +5,10 @@
 #include<iostream>
 #include<cmath>
 
-#include "hsl.h"
-#include "hsv.h"
+#include "hsl.hpp"
+#include "hsv.hpp"
 
-#include "seqColor.h"
+#include "seqColor.hpp"
 class rgb
 {
     private:

@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "cchar.h"
+#include "cchar.hpp"
 
 class windowSettings
 {

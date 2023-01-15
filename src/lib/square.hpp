@@ -1,9 +1,9 @@
 // square class file
 
 #pragma once
-#include "cchar.h"
-#include "pos.h"
-#include "cli.h"
+#include "cchar.hpp"
+#include "pos.hpp"
+#include "cli.hpp"
 
 class square
 {

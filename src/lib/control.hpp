@@ -2,9 +2,9 @@
 
 #pragma once
 
-#include "sz.h"
-#include "pos.h"
-#include "cli.h"
+#include "sz.hpp"
+#include "pos.hpp"
+#include "cli.hpp"
 
 
 class control

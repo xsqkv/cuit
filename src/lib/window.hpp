@@ -4,8 +4,8 @@
 
 #include<iostream>
 
-#include "containerControl.h"
-#include "windowSettings.h"
+#include "containerControl.hpp"
+#include "windowSettings.hpp"
 
 
 class window : public containerControl

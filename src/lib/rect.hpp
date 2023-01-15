@@ -1,8 +1,8 @@
 // rectangle shape class control
 
 #pragma once
-#include "shape.h"
-#include "cli.h"
+#include "shape.hpp"
+#include "cli.hpp"
 
 class rect : public shape
 {

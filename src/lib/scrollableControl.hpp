@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "control.h"
+#include "control.hpp"
 
 class scrollableControl : public control
 {

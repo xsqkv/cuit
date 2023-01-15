@@ -5,8 +5,8 @@
 #include<iostream>
 #include<cmath>
 
-#include "hsv.h"
-#include "utils.h"
+#include "hsv.hpp"
+#include "utils.hpp"
 
 class hsl
 {

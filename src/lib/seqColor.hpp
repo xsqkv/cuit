@@ -4,7 +4,7 @@
 
 #include<iostream>
 
-#include "rgb.h"
+#include "rgb.hpp"
 
 class seqColor
 {

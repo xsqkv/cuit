@@ -6,3 +6,4 @@
 #### or
 #### `$>./build.sh`
 #### if you needed to generate .o .a .so files - uncomment functions in build.sh file
+#### Setting for compiling has in settingsBuild.sh file

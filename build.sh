@@ -2,7 +2,7 @@
 
 #PREPARING
 
-source settingsBuild.sh; # READ VARIABLES FROM buildSettings.sh FILE
+source vars.sh; # READ VARIABLES FROM buildSettings.sh FILE
 
 SRC_LIB_PATH="src/lib"; # SOURCE LIB PATH
 SRC_TESTS_PATH="src/tests"; # SOURCE TESTS PATH

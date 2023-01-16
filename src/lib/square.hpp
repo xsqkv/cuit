@@ -1,14 +1,13 @@
 // square class file
 
 #pragma once
-#include "cchar.hpp"
 #include "pos.hpp"
 #include "cli.hpp"
 
 class square
 {
     public:
-    cchar ch;
+    char8_t ch;
     int n;
     pos Pos;
     bool norm;
@@ -20,11 +19,11 @@ class square
         if(norm) x = n * coef;
         else x = n;
         std::string xline;
-        for(int i=0;i < x;++i) xline += ch.getStr();
+        for(int i=0;i < x;++i) xline += ch;
         for(int y = Pos.y; y < Pos.y+n;++y) cli::setText(Pos.x,y,xline);
     }
 
-    constexpr inline square(int N=5, bool normed=1, cchar CH={"#"},pos POS={5,5,1})
+    constexpr inline square(int N=5, bool normed=1, char8_t CH='#',pos POS={5,5,1})
     {
         ch = CH;
         n = N;

@@ -10,15 +10,11 @@ class rect : public shape
 
     constexpr inline void draw() override
     {
-        char* clr = ch.getClr();
+        std::string str;
 
-        char sym = ch.str.c_str()[0];
+        for(int x = 1;x < size.width; ++x) str += ch;
 
-        for(int x = 1;x < size.width; ++x) ch.str += sym;
-
-        char* str = ch.getStr();
-
-        printf("%s",clr);
+        cli::setColor(10,0,1);
 
         for(int y = 0;y < size.height; ++y) cli::setText(size.width,y+5,str);
     }
@@ -35,13 +31,13 @@ class rect : public shape
         size = SIZE;
     }
 
-    inline rect(int W,int H,cchar CH)
+    inline rect(int W,int H,char8_t CH)
     {
         size = sz(W,H);
         ch = CH;
     }
 
-    inline rect(sz SIZE,cchar CH)
+    inline rect(sz SIZE,char8_t CH)
     {
         size = SIZE;
         ch = CH;

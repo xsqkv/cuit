@@ -6,7 +6,7 @@
 
 class button : public control
 {
-    enum class textAlign : char8_t
+    enum class textAlign : uint8_t
     {
         LEFT,
         CENTER,

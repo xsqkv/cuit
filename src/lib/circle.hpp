@@ -8,7 +8,7 @@
 
 class circle : public shape
 {
-    constexpr inline void drawPixel(int x ,int y, cchar chr)
+    constexpr inline void drawPixel(int x ,int y, char8_t chr)
     {
         if(size.normed){
             cli::setChar(x + position.x, y * fy + position.y, chr);
@@ -106,7 +106,7 @@ class circle : public shape
         is_filled = Filled;
     }
 
-    inline circle(sz SZ, pos POS, cchar CH, bool Filled = 0)
+    inline circle(sz SZ, pos POS, char8_t CH, bool Filled = 0)
     {
         size = SZ;
         fy = (float)size.height / (float)size.width;

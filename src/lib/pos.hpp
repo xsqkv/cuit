@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include<iostream>
+
 #include "sz.hpp"
 
 class pos
@@ -10,7 +12,7 @@ class pos
     unsigned x, y;
     bool normed;
     
-    enum class place : char8_t
+    enum class place : uint8_t
     {
          TOP_LEFT,      TOP_MIDDLE,      TOP_RIGHT,
 

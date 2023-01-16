@@ -29,8 +29,6 @@ class window : public containerControl
         //position of end of window y
         unsigned fy = ly + this->size.height;
 
-        std::string cur = "";
-
         if(settings.fill && settings.topBar && settings.leftBar && settings.rightBar && settings.downBar && settings.leftTopCorner && settings.rightTopCorner && settings.leftDownCorner && settings.rightDownCorner)
         {
             cli::setChar(lx, ly, settings.leftTopCorner);

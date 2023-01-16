@@ -3,32 +3,11 @@
 #pragma once
 
 #include<iostream>
+#include<cstring>
 
 const char* s = "0123456789ABCDEF";
 
-inline constexpr int strlen(char* str)
-{
-    int count = 0;
-    while(*str != '\0')
-    {
-        count++;
-        str++;
-    }
-    return count;
-}
-
-inline constexpr int strlen(const char* str)
-{
-    int count = 0;
-    while(*str != '\0')
-    {
-        count++;
-        str++;
-    }
-    return count;
-}
-
-inline constexpr char* lower(char* x)
+inline char* lower(char* x)
 {
     int sz = strlen(x);
     for(int i=0;i < sz;i++)
@@ -38,7 +17,7 @@ inline constexpr char* lower(char* x)
     return x;
 }
 
-inline constexpr char* upper(char* x)
+inline char* upper(char* x)
 {
     int sz = strlen(x);
     for(int i=0;i < sz;i++)
@@ -76,37 +55,14 @@ inline char* upper(const char* x)
     return a;
 }
 
-inline constexpr std::string its(unsigned x)
-{
-    if(x==0)return std::string("0");
-    std::string result;
-    while(x!=0)
-    {
-        result = (char)(x%10+48) + result;
-        x /= 10;
-    }
-    return result;
-}
-
-inline constexpr int pow(int x, int n)
-{
-    if(n == 0) return 1;
-    if(n == 1) return x;
-
-    int result = x;
-    for(int i=0;i < n-1;i++) result *= x;
-
-    return result;
-}
-
 template<typename T>
-inline constexpr T max(T a,T b)
+inline T max(T a,T b)
 {
     if(a>b) return a;
     else return b;
 }
 template<typename T>
-inline constexpr T max(T a,T b,T c)
+inline T max(T a,T b,T c)
 {
     T tmp = max(a,b);
     if(tmp>c) return tmp;
@@ -114,13 +70,13 @@ inline constexpr T max(T a,T b,T c)
 }
 
 template<typename T>
-inline constexpr T min(T a,T b)
+inline T min(T a,T b)
 {
     if(a<b) return a;
     else return b;
 }
 template<typename T>
-inline constexpr T min(T a,T b,T c)
+inline T min(T a,T b,T c)
 {
     T tmp = min(a,b);
     if(tmp<c) return tmp;
@@ -128,7 +84,7 @@ inline constexpr T min(T a,T b,T c)
 }
 
 template<class T>
-inline constexpr int iof(T* arr,T x)
+inline int iof(T* arr,T x)
 {
     int sz = strlen(arr);
 
@@ -141,7 +97,7 @@ inline constexpr int iof(T* arr,T x)
 }
 
 template<class T>
-inline constexpr int iof(const T* arr,T x)
+inline int iof(const T* arr,T x)
 {
     int sz = strlen(arr);
 
@@ -153,7 +109,7 @@ inline constexpr int iof(const T* arr,T x)
     return 0;
 }
 
-inline constexpr int from16to10(char* x)
+inline int from16to10(char* x)
 {
     upper(x);
     int sz = strlen(x);
@@ -165,7 +121,7 @@ inline constexpr int from16to10(char* x)
     return result;
 }
 
-inline constexpr int from16to10(const char* X)
+inline int from16to10(const char* X)
 {
     char* x = upper(X);
     int sz = strlen(x);
@@ -188,7 +144,7 @@ inline char* reverse(char* arr)
     return res;
 }
 
-constexpr inline char* reverse(const char* arr)
+ inline char* reverse(const char* arr)
 {
     int sz = strlen(arr);
     char* res = new char[sz];

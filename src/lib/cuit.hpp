@@ -3,7 +3,6 @@
 #pragma once
 
 #include "button.hpp"
-#include "cchar.hpp"
 #include "circle.hpp"
 #include "cli.hpp"
 #include "containerControl.hpp"

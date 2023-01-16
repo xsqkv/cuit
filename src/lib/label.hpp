@@ -2,11 +2,11 @@
 
 #pragma once
 
-#include "control.hpp"
+#include "cuit.hpp"
 
 class label : public control
 {
-    cchar text;
+    std::string text;
     public:
     bool wrap = 0;// abo| -> abo|:ba |
     bool overwriteBorders = 1;//if 1 = abob / if 0 = abo|
@@ -15,22 +15,22 @@ class label : public control
 
     void draw() override
     {
-        cli::setText(parent->position.x + position.x, parent->position.y + position.y, text.str);
+        cli::setText(parent->position.x + position.x, parent->position.y + position.y, text);
         printf("\e[0m");//reset color
     }
     
-    void setText(cchar str)
+    void setText(std::string str)
     {
         text = str;
-        size = sz(text.str.length(),1);
+        size = {static_cast<unsigned>(str.size()),1};
         draw();
     }
 
     label() {}
 
-    label(cchar str)
+    label(std::string str)
     {
         text = str;
-        size = sz(strlen(text.getStr()),1);
+        size = {static_cast<unsigned>(str.size()),1};
     }
 };

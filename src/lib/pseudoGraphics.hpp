@@ -5,7 +5,7 @@
 class pseudoGraphics
 {
     public:
-    enum Single : char8_t
+    enum Single : uint8_t
     {
         SINGLE_HORISONTAL,
         SINGLE_VERTICAL,
@@ -41,7 +41,7 @@ class pseudoGraphics
         "╰",
     };
 
-    enum SingleDoubled : char8_t
+    enum SingleDoubled : uint8_t
     {
         SINGLE_DOUBLED_HORISONTAL,
         SINGLE_DOUBLED_VERTICAL,
@@ -87,7 +87,7 @@ class pseudoGraphics
         "╫",
     };
 
-    enum Doubled : char8_t
+    enum Doubled : uint8_t
     {
         DOUBLED_HORISONTAL,
         DOUBLED_VERTICAL,
@@ -115,7 +115,7 @@ class pseudoGraphics
         "╬",
     };
 
-    enum Bold : char8_t
+    enum Bold : uint8_t
     {
         BOLD_HORISONTAL,
         BOLD_VERTICAL,
@@ -143,7 +143,7 @@ class pseudoGraphics
         "╋",
     };
 
-    enum SlimBolded : char8_t
+    enum SlimBolded : uint8_t
     {
         RIGHT_SLIM_BOLDED_LINE,
         DOWN_SLIM_BOLDED_LINE,
@@ -204,7 +204,7 @@ class pseudoGraphics
         "╊",
     };
 
-    enum PiecesLines : char8_t
+    enum PiecesLines : uint8_t
     {
         LEFT_PIECE_INE,
         UP_PIECE_LINE,
@@ -218,7 +218,7 @@ class pseudoGraphics
         "╷",
     };
 
-    enum BoldPieces : char8_t
+    enum BoldPieces : uint8_t
     {
         LEFT_PIECE_BOLD_LINE,
         UP_PIECE_BOLD_LINE,
@@ -232,7 +232,7 @@ class pseudoGraphics
         "╻",
     };
 
-    enum DottedLines : char8_t
+    enum DottedLines : uint8_t
     {
         HORISONTAL_LOW_DOTTED_LINE,
         VERTICAL_LOW_DOTTED_LINE,
@@ -250,7 +250,7 @@ class pseudoGraphics
         "┊",
     };
 
-    enum BoldDottedLines : char8_t
+    enum BoldDottedLines : uint8_t
     {
         HORISONTAL_LOW_BOLD_DOTTED_LINE,
         VERTICAL_LOW_BOLD_DOTTED_LINE,
@@ -268,7 +268,7 @@ class pseudoGraphics
         "┉",
     };
 
-    enum DiagonaleLines : char8_t
+    enum DiagonaleLines : uint8_t
     {
         DIAGONALE_LINE,
         BACK_DIAGONALE_LINE,
@@ -280,7 +280,7 @@ class pseudoGraphics
         "╳",
     };
 
-    enum Blocks : char8_t
+    enum Blocks : uint8_t
     {
         LOW_LIGHT_BLOCK,
         MID_LIGHT_BLOCK,
@@ -306,7 +306,7 @@ class pseudoGraphics
         "▬"
     };
 
-    enum Etc : char8_t
+    enum Etc : uint8_t
     {
         SMILE,
         FILLED_SMILE,

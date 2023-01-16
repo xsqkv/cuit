@@ -18,11 +18,11 @@ int main(int argc,char** argv)
 
     window w({20,15,1},{5,5,1});
 
-    label l(cchar("label",10,0,0));
+    label l("label");
     
     l.position = {1,1,0};
 
-    w.settings.fill = ".";
+    w.settings.fill = '.';
 
     w.addControl(l);
     //w.addControl(l);

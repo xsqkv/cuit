@@ -2,12 +2,10 @@
 
 #pragma once
 
-#include "cchar.hpp"
-
 class windowSettings
 {
     public:
-    enum class windowStyles : char8_t
+    enum class windowStyles : uint8_t
     {
         SOLID,
         BORDERED,
@@ -16,24 +14,24 @@ class windowSettings
         SMOOTH,
     };
     
-    cchar fill{""};
+    char8_t fill;
 
-    cchar borders{""};
+    char8_t borders;
 
-    cchar corners{""};
+    char8_t corners;
 
-    cchar hBar{""};
-    cchar vBar{""};
+    char8_t hBar;
+    char8_t vBar;
 
-    cchar topBar{""};
-    cchar leftBar{""};
-    cchar rightBar{""};
-    cchar downBar{""};
+    char8_t topBar;
+    char8_t leftBar;
+    char8_t rightBar;
+    char8_t downBar;
 
-    cchar leftTopCorner{""};
-    cchar rightTopCorner{""};
-    cchar leftDownCorner{""};
-    cchar rightDownCorner{""};
+    char8_t leftTopCorner;
+    char8_t rightTopCorner;
+    char8_t leftDownCorner;
+    char8_t rightDownCorner;
 
     windowSettings()
     {

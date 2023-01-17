@@ -14,7 +14,7 @@ class rect : public shape
 
         for(int x = 1;x < size.width; ++x) str += ch;
 
-        cli::setColor(10,0,1);
+        cli::getColor(10,0,1);
 
         for(int y = 0;y < size.height; ++y) cli::setText(size.width,y+5,str);
     }

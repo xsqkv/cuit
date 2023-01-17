@@ -57,6 +57,39 @@ namespace cli
 
     #pragma region Methods
 
+    std::string getColor(unsigned foreground, unsigned background, unsigned style)
+    {
+        // minimal reqs "\e[01;38;05;10mUSAS\e[m112"
+
+        std::string result = "\e[";
+        if(style)
+        {   
+            if(style & 1  ) { result += "01";  style -= 1;   if(style) result += ';'; }
+            if(style & 2  ) { result += "02";  style -= 2;   if(style) result += ';'; }
+            if(style & 4  ) { result += "03";  style -= 4;   if(style) result += ';'; }
+            if(style & 8  ) { result += "04";  style -= 8;   if(style) result += ';'; }
+            if(style & 16 ) { result += "05";  style -= 16;  if(style) result += ';'; }
+            if(style & 32 ) { result += "06";  style -= 32;  if(style) result += ';'; }
+            if(style & 64 ) { result += "07";  style -= 64;  if(style) result += ';'; }
+            if(style & 128) { result += "08";  style -= 128;                          }
+
+            if(foreground) result += ';';
+            else result += 'm';
+        }
+        if(foreground)
+        {
+            result += "38;05;" + std::to_string(foreground);
+
+            if(background) result += ';';
+            else result += 'm';
+        }
+        if(background)
+        {
+            result += "48;05;" + std::to_string(background) + 'm';
+        }
+        return result;
+    }
+
     winsize getSize()
     {
         struct winsize w;
@@ -108,42 +141,14 @@ namespace cli
         printf("\e[%d;%dH%s",y,x,str.c_str());
     }
 
-    void setColor(unsigned foreground, unsigned background, unsigned style)
+    void beginColor(unsigned foreground, unsigned background, unsigned style)
     {
-        // minimal reqs "\e[01;38;05;10mUSAS\e[m112"
-
-        std::string result = "\e[";
-        if(style)
-        {   
-            if(style & 1  ) { result += "01";  style -= 1;   if(style) result += ';'; }
-            if(style & 2  ) { result += "02";  style -= 2;   if(style) result += ';'; }
-            if(style & 4  ) { result += "03";  style -= 4;   if(style) result += ';'; }
-            if(style & 8  ) { result += "04";  style -= 8;   if(style) result += ';'; }
-            if(style & 16 ) { result += "05";  style -= 16;  if(style) result += ';'; }
-            if(style & 32 ) { result += "06";  style -= 32;  if(style) result += ';'; }
-            if(style & 64 ) { result += "07";  style -= 64;  if(style) result += ';'; }
-            if(style & 128) { result += "08";  style -= 128;                          }
-
-            if(foreground) result += ';';
-            else result += 'm';
-        }
-        if(foreground)
-        {
-            result += "38;05;" + std::to_string(foreground);
-
-            if(background) result += ';';
-            else result += 'm';
-        }
-        if(background)
-        {
-            result += "48;05;" + std::to_string(background) + 'm';
-        }
-        printf("%s",result.c_str());
+        printf("%s",getColor(foreground,background,style).c_str());
     }
     
-    void resetColor()
+    void endColor()
     {
-        printf("\e[m");
+        printf("%s","\e[m");
     }
 
     inline const void up()

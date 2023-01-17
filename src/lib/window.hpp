@@ -16,7 +16,9 @@ class window : public containerControl
     std::string title;
 
     public:
+
     windowSettings settings;
+
     void draw() override
     {
         //position of start window x
@@ -48,7 +50,6 @@ class window : public containerControl
             for(unsigned x=lx+1;x<fx;x++)cli::setChar(x,fy,settings.downBar);
             for(unsigned y=ly+1;y<fy;y++)cli::setChar(fx,y,settings.rightBar);
 
-            return;
         }   
         else if(settings.fill && settings.hBar && settings.vBar && settings.leftTopCorner && settings.rightTopCorner && settings.leftDownCorner && settings.rightDownCorner)
         {
@@ -74,7 +75,6 @@ class window : public containerControl
             cli::setChar(fx, ly, settings.rightTopCorner);
             cli::setChar(lx, fy, settings.leftDownCorner);
             cli::setChar(fx, fy, settings.rightDownCorner);
-            return;
         }
         else if(settings.fill && settings.borders && settings.leftTopCorner && settings.rightTopCorner && settings.leftDownCorner && settings.rightDownCorner)
         {
@@ -90,7 +90,6 @@ class window : public containerControl
             cli::setChar(fx, ly, settings.rightTopCorner);
             cli::setChar(lx, fy, settings.leftDownCorner);
             cli::setChar(fx, fy, settings.rightDownCorner);
-            return;
         }
         else if(settings.fill && settings.corners && settings.topBar && settings.leftBar && settings.rightBar && settings.downBar)
         {
@@ -111,7 +110,6 @@ class window : public containerControl
             for(unsigned x=lx+1;x<fx;x++)cli::setChar(x,fy,settings.downBar);
             for(unsigned y=ly+1;y<fy;y++)cli::setChar(fx,y,settings.rightBar);
 
-            return;
         }
         else if(settings.fill && settings.corners && settings.hBar && settings.vBar)
         {
@@ -137,7 +135,6 @@ class window : public containerControl
             cli::setChar(fx, ly, settings.corners);
             cli::setChar(lx, fy, settings.corners);
             cli::setChar(fx, fy, settings.corners);
-            return;
         }
         else if(settings.fill && settings.corners && settings.borders)
         {
@@ -153,7 +150,6 @@ class window : public containerControl
             cli::setChar(fx, ly, settings.corners);
             cli::setChar(lx, fy, settings.corners);
             cli::setChar(fx, fy, settings.corners);
-            return;
         }
         else if(settings.fill && settings.leftTopCorner && settings.rightTopCorner && settings.leftDownCorner && settings.rightDownCorner)
         {
@@ -168,7 +164,6 @@ class window : public containerControl
             cli::setChar(fx, ly, settings.rightTopCorner);
             cli::setChar(lx, fy, settings.leftDownCorner);
             cli::setChar(fx, fy, settings.rightDownCorner);
-            return;
         }
         else if(settings.fill && settings.corners)
         {
@@ -183,7 +178,6 @@ class window : public containerControl
             cli::setChar(fx, ly, settings.corners);
             cli::setChar(lx, fy, settings.corners);
             cli::setChar(fx, fy, settings.corners);
-            return;
         }
         else if(settings.fill && settings.topBar && settings.leftBar && settings.rightBar && settings.downBar)
         {
@@ -200,7 +194,6 @@ class window : public containerControl
             for(unsigned x=lx+1;x<fx;x++)cli::setChar(x,fy,settings.downBar);
             for(unsigned y=ly+1;y<fy;y++)cli::setChar(fx,y,settings.rightBar);
 
-            return;
         }
         else if(settings.fill && settings.borders)
         {
@@ -212,7 +205,6 @@ class window : public containerControl
                     cli::setChar(x,y,settings.fill);
                 }
             }
-            return;
         }
         else if(settings.fill)
         {
@@ -223,7 +215,6 @@ class window : public containerControl
                     cli::setChar(x,y,settings.fill);
                 }
             }
-            return;
         } 
         else printf("format error\n");
         

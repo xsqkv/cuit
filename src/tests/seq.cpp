@@ -4,15 +4,15 @@ using namespace cli;
 
 int main()
 {
-	cli::setColor(12,0,0);
+	cli::beginColor(12,0,0);
 	printf("AB");
-	cli::resetColor();
+	cli::endColor();
 
-	cli::setColor(0,12,0);
+	cli::beginColor(0,12,0);
 	printf("00");
-	cli::resetColor();
+	cli::endColor();
 
-	cli::setColor(0,0,127);
+	cli::beginColor(0,0,127);
 	printf("BA\n");
-	cli::resetColor();
+	cli::endColor();
 }

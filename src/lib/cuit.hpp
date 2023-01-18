@@ -1,11 +1,11 @@
-// compilation of all libraries
+// Collection of all libraries
 
 #pragma once
 
 #include "button.hpp"
 #include "circle.hpp"
 #include "cli.hpp"
-#include "containerControl.hpp"
+#include "contentControl.hpp"
 #include "control.hpp"
 #include "cuit.hpp"
 #include "global.hpp"
@@ -18,7 +18,7 @@
 #include "rect.hpp"
 #include "seqColor.hpp"
 #include "rgb.hpp"
-#include "scrollableControl.hpp"
+#include "scrollControl.hpp"
 #include "shape.hpp"
 #include "square.hpp"
 #include "sz.hpp"

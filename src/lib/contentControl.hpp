@@ -6,7 +6,7 @@
 #include "control.hpp"
 
 
-class containerControl : public control
+class contentControl : public control
 {
     public:
     std::vector<control*> elements;
@@ -27,5 +27,5 @@ class containerControl : public control
         return elements.size();
     }
 
-    containerControl() : control() {}
+    contentControl() : control() {}
 };

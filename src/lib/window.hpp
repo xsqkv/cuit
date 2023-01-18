@@ -4,11 +4,11 @@
 
 #include<iostream>
 
-#include "containerControl.hpp"
+#include "contentControl.hpp"
 #include "wSettings.hpp"
 
 
-class window : public containerControl
+class window : public contentControl
 {
     protected:
     bool topMost;
@@ -103,7 +103,7 @@ class window : public containerControl
         for(auto& ctrl : elements) { ctrl->draw(); }
     }
 
-    window() : containerControl() 
+    window() : contentControl() 
     {
         //elements.push_back();
     }

@@ -4,7 +4,7 @@
 
 #include "control.hpp"
 
-class scrollableControl : public control
+class scrollControl : public control
 {
     public:
     bool inactiveScrollBarsVisibility;

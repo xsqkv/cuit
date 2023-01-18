@@ -2,9 +2,9 @@
 
 #pragma once
 
-#include "containerControl.hpp"
+#include "contentControl.hpp"
 
-class panel : public containerControl
+class panel : public contentControl
 {
     panel() {}
 };

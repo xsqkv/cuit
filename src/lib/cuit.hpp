@@ -24,5 +24,5 @@
 #include "sz.hpp"
 #include "utils.hpp"
 #include "window.hpp"
-#include "windowSettings.hpp"
+#include "wSettings.hpp"
 #include "debug.hpp"

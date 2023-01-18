@@ -16,17 +16,25 @@ int main(int argc,char** argv)
 
     cli::clear();
 
-    window w({20,15,1},{5,5,1});
+    window w({25,25,1},{5,5,0});
 
     label l("label");
     
     l.position = {1,1,0};
 
-    w.settings.fill = '.';
+    w.settings.fill = ':';
+    //w.settings.topBar = '-';
+    //w.settings.leftBar = '|';
+    //w.settings.rightBar = '|';
+    //w.settings.downBar = '-';
+    //w.settings.leftTopCorner = '+';
+    //w.settings.rightTopCorner = '+';
+    //w.settings.leftDownCorner = '+';
+    //w.settings.rightDownCorner = '+';
 
     w.addControl(l);
     //w.addControl(l);
-    for(int i=0;i<1000;++i)
+    //for(int i = 0;i < 8000; ++i)
         w.show();
 
     //getchar();

@@ -5,7 +5,7 @@
 #include<iostream>
 
 #include "containerControl.hpp"
-#include "windowSettings.hpp"
+#include "wSettings.hpp"
 
 
 class window : public containerControl
@@ -17,208 +17,77 @@ class window : public containerControl
 
     public:
 
-    windowSettings settings;
+    wSettings settings;
 
     void draw() override
     {
-        //position of start window x
-        unsigned lx = this->position.x;
-        //position of start window y
-        unsigned ly = this->position.y;
+        std::string win;
 
-        //position of end of window x
-        unsigned fx = lx + this->size.width;
-        //position of end of window y
-        unsigned fy = ly + this->size.height;
+        // if fill variable not null draw rect
+        if( settings.fill
+            && !settings.leftTopCorner
+            && !settings.topBar
+            && !settings.rightTopCorner
+            && !settings.leftBar
+            && !settings.rightBar
+            && !settings.leftDownCorner
+            && !settings.downBar
+            && !settings.rightDownCorner)
+            {
+                rect::drawRect(
+                position.x,
+                position.y,
+                size.width,
+                size.height,
+                settings.fill
+                );
 
-        if(settings.fill && settings.topBar && settings.leftBar && settings.rightBar && settings.downBar && settings.leftTopCorner && settings.rightTopCorner && settings.leftDownCorner && settings.rightDownCorner)
-        {
-            cli::setChar(lx, ly, settings.leftTopCorner);
-            cli::setChar(fx, ly, settings.rightTopCorner);
-            cli::setChar(lx, fy, settings.leftDownCorner);
-            cli::setChar(fx, fy, settings.rightDownCorner);
-            for(unsigned y = ly+1; y < fy; y++)
-            {
-                for(unsigned x = lx+1; x < fx; x++)
-                {
-                    cli::setChar(x, y, settings.fill);
-                }
+                return;
             }
-            printf("\e[m");
-            for(unsigned x=lx+1;x<fx;x++)cli::setChar(x,ly,settings.topBar);
-            for(unsigned y=ly+1;y<fy;y++)cli::setChar(lx,y,settings.leftBar);
-            for(unsigned x=lx+1;x<fx;x++)cli::setChar(x,fy,settings.downBar);
-            for(unsigned y=ly+1;y<fy;y++)cli::setChar(fx,y,settings.rightBar);
 
-        }   
-        else if(settings.fill && settings.hBar && settings.vBar && settings.leftTopCorner && settings.rightTopCorner && settings.leftDownCorner && settings.rightDownCorner)
+        //draw left top corner
+        if(settings.leftTopCorner) win += settings.leftTopCorner;
+        else win += settings.fill;
+
+        //draw top bar
+        if(settings.topBar) win += std::string(this->size.width - 2, settings.topBar);
+        else win += std::string(this->size.width - 2, settings.fill);
+
+        //draw right top corner
+        if(settings.rightTopCorner) win += settings.rightTopCorner;
+        else win += settings.fill;
+        win += "\e[1B\e["+std::to_string(size.width)+"D";
+
+        //draw left bar, fill, right bar.
+        for(int i = 1; i < this->size.height-1; ++i)
         {
-            for(unsigned y = ly; y <= fy; y++)
-            {
-                for(unsigned x = lx; x <= fx; x++)
-                {
-                    if((y == ly || y == fy) && (x != lx && x != fx))//draw horisontal bars
-                    {
-                        cli::setChar(x, y, settings.hBar);
-                    }
-                    else if((y != ly && y != fy) && (x == lx || x == fx))//draw vertical bars
-                    {
-                        cli::setChar(x, y, settings.vBar);
-                    }
-                    else//draw 
-                    {
-                        cli::setChar(x, y, settings.fill);
-                    }
-                }
-            }
-            cli::setChar(lx, ly, settings.leftTopCorner);
-            cli::setChar(fx, ly, settings.rightTopCorner);
-            cli::setChar(lx, fy, settings.leftDownCorner);
-            cli::setChar(fx, fy, settings.rightDownCorner);
-        }
-        else if(settings.fill && settings.borders && settings.leftTopCorner && settings.rightTopCorner && settings.leftDownCorner && settings.rightDownCorner)
-        {
-            for(unsigned y=ly;y<=fy;y++)
-            {
-                for(unsigned x=lx;x<=fx;x++)
-                {
-                    if(x==lx||x==fx||y==ly||y==fy) {cli::setChar(x,y,settings.borders); continue;}
-                    cli::setChar(x,y,settings.fill);
-                }
-            }
-            cli::setChar(lx, ly, settings.leftTopCorner);
-            cli::setChar(fx, ly, settings.rightTopCorner);
-            cli::setChar(lx, fy, settings.leftDownCorner);
-            cli::setChar(fx, fy, settings.rightDownCorner);
-        }
-        else if(settings.fill && settings.corners && settings.topBar && settings.leftBar && settings.rightBar && settings.downBar)
-        {
-            cli::setChar(lx, ly, settings.corners);
-            cli::setChar(fx, ly, settings.corners);
-            cli::setChar(lx, fy, settings.corners);
-            cli::setChar(fx, fy, settings.corners);
-            for(unsigned y = ly+1; y < fy; y++)
-            {
-                for(unsigned x = lx+1; x < fx; x++)
-                {
-                    cli::setChar(x, y, settings.fill);
-                }
-            }
+            //draw left bar
+            if(settings.leftBar) win += settings.leftBar;
+            else win += settings.fill;
             
-            for(unsigned x=lx+1;x<fx;x++)cli::setChar(x,ly,settings.topBar);
-            for(unsigned y=ly+1;y<fy;y++)cli::setChar(lx,y,settings.leftBar);
-            for(unsigned x=lx+1;x<fx;x++)cli::setChar(x,fy,settings.downBar);
-            for(unsigned y=ly+1;y<fy;y++)cli::setChar(fx,y,settings.rightBar);
+            //draw fill
+            win += std::string(this->size.width - 2, settings.fill);
 
+            //draw right bar
+            if(settings.rightBar) win += settings.rightBar;
+            else win += settings.fill;
+            win += "\e[1B\e["+std::to_string(size.width)+"D";
         }
-        else if(settings.fill && settings.corners && settings.hBar && settings.vBar)
-        {
-            for(unsigned y = ly; y <= fy; y++)
-            {
-                for(unsigned x = lx; x <= fx; x++)
-                {
-                    if((y == ly || y == fy) && (x != lx && x != fx))//draw horisontal bars
-                    {
-                        cli::setChar(x, y, settings.hBar);
-                    }
-                    else if((y != ly && y != fy) && (x == lx || x == fx))//draw vertical bars
-                    {
-                        cli::setChar(x, y, settings.vBar);
-                    }
-                    else//draw 
-                    {
-                        cli::setChar(x, y, settings.fill);
-                    }
-                }
-            }
-            cli::setChar(lx, ly, settings.corners);
-            cli::setChar(fx, ly, settings.corners);
-            cli::setChar(lx, fy, settings.corners);
-            cli::setChar(fx, fy, settings.corners);
-        }
-        else if(settings.fill && settings.corners && settings.borders)
-        {
-            for(unsigned y=ly;y<=fy;y++)
-            {
-                for(unsigned x=lx;x<=fx;x++)
-                {
-                    if(x==lx||x==fx||y==ly||y==fy) {cli::setChar(x,y,settings.borders); continue;}
-                    cli::setChar(x,y,settings.fill);
-                }
-            }
-            cli::setChar(lx, ly, settings.corners);
-            cli::setChar(fx, ly, settings.corners);
-            cli::setChar(lx, fy, settings.corners);
-            cli::setChar(fx, fy, settings.corners);
-        }
-        else if(settings.fill && settings.leftTopCorner && settings.rightTopCorner && settings.leftDownCorner && settings.rightDownCorner)
-        {
-            for(unsigned y=ly;y<=fy;y++)
-            {
-                for(unsigned x=lx;x<=fx;x++)
-                {
-                    cli::setChar(x,y,settings.fill);
-                }
-            }
-            cli::setChar(lx, ly, settings.leftTopCorner);
-            cli::setChar(fx, ly, settings.rightTopCorner);
-            cli::setChar(lx, fy, settings.leftDownCorner);
-            cli::setChar(fx, fy, settings.rightDownCorner);
-        }
-        else if(settings.fill && settings.corners)
-        {
-            for(unsigned y=ly;y<=fy;y++)
-            {
-                for(unsigned x=lx;x<=fx;x++)
-                {
-                    cli::setChar(x,y,settings.fill);
-                }
-            }
-            cli::setChar(lx, ly, settings.corners);
-            cli::setChar(fx, ly, settings.corners);
-            cli::setChar(lx, fy, settings.corners);
-            cli::setChar(fx, fy, settings.corners);
-        }
-        else if(settings.fill && settings.topBar && settings.leftBar && settings.rightBar && settings.downBar)
-        {
-            for(unsigned y = ly+1; y < fy; y++)
-            {
-                for(unsigned x = lx+1; x < fx; x++)
-                {
-                    cli::setChar(x, y, settings.fill);
-                }
-            }
-            
-            for(unsigned x=lx+1;x<fx;x++)cli::setChar(x,ly,settings.topBar);
-            for(unsigned y=ly+1;y<fy;y++)cli::setChar(lx,y,settings.leftBar);
-            for(unsigned x=lx+1;x<fx;x++)cli::setChar(x,fy,settings.downBar);
-            for(unsigned y=ly+1;y<fy;y++)cli::setChar(fx,y,settings.rightBar);
 
-        }
-        else if(settings.fill && settings.borders)
-        {
-            for(unsigned y=ly;y<=fy;y++)
-            {
-                for(unsigned x=lx;x<=fx;x++)
-                {
-                    if(x==lx||x==fx||y==ly||y==fy) {cli::setChar(x,y,settings.borders); continue;}
-                    cli::setChar(x,y,settings.fill);
-                }
-            }
-        }
-        else if(settings.fill)
-        {
-            for(unsigned y=ly;y<=fy;y++)
-            {
-                for(unsigned x=lx;x<=fx;x++)
-                {
-                    cli::setChar(x,y,settings.fill);
-                }
-            }
-        } 
-        else printf("format error\n");
-        
-        printf("\e[m"); //Reset color
+        //draw left down corner
+        if(settings.leftDownCorner) win += settings.leftDownCorner;
+        else win += settings.fill;
+
+        //draw down bar
+        if(settings.downBar) win += std::string(this->size.width - 2, settings.downBar);
+        else win += std::string(this->size.width - 2, settings.fill);
+
+        //draw right down corner
+        if(settings.rightDownCorner) win += settings.rightDownCorner;
+        else win += settings.fill;
+
+        // write whole window in console
+        cli::setText(this->position.x, this->position.y, win);
     }
 
     void hide()
@@ -231,7 +100,7 @@ class window : public containerControl
     {
         visible = 1;
         draw();
-        for(control*& ctrl : elements) { ctrl->draw(); }
+        for(auto& ctrl : elements) { ctrl->draw(); }
     }
 
     window() : containerControl() 

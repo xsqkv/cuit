@@ -7,7 +7,7 @@
 class shape
 {
     public:
-    char8_t ch;
+    char ch;
     sz size;
     pos position;
 

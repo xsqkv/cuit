@@ -100,7 +100,7 @@ class window : public contentControl
     {
         visible = 1;
         draw();
-        for(auto& ctrl : elements) { ctrl->draw(); }
+        for(auto& ctrl : childs) { ctrl->draw(); }
     }
 
     window() : contentControl() 

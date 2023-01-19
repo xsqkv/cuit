@@ -12,13 +12,14 @@ class control
     public:
     bool focusable;
     bool focused;
+
     bool visible=0;
     bool enabled;
     bool sizable;
     sz size;
     pos position;
     control* parent;
-    control* child;
+    
     
     virtual void draw() {}
 

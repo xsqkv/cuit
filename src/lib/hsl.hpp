@@ -6,7 +6,6 @@
 #include<cmath>
 
 #include "hsv.hpp"
-#include "utils.hpp"
 
 class hsl
 {
@@ -15,19 +14,22 @@ class hsl
     double s;
     double l;
 
+    // print HSL colors
     inline constexpr void print()
     {
         printf("%3.1f %3.1f%% %3.1f%% \n",h,s,l);
     }
 
+    // get HSL from HSV
     inline constexpr void fromHSV(hsv& x)
     {
         h = x.h;
         l = x.v * (1 - x.v / 2);
         if(l == 0 || l == 1) s = 0;
-        else s = (x.v - l) / min(l, 1 - l);
+        else s = (x.v - l) / std::min(l, 1 - l);
     }
 
+    // from HSV to HSL
     inline constexpr void toHSV(hsv& x)
     {
         double hh = h;
@@ -45,12 +47,9 @@ class hsl
         x.v = round(x.v * 100.0);
     }
 
+    // default constructor
     inline constexpr hsl() : h(0), s(0), l(0) {}
 
-    inline constexpr hsl(double H,double S,double L)
-    {
-        h=H;
-        s=S;
-        l=L;
-    }
+    // setter constructor
+    inline constexpr hsl(double H,double S,double L) : h(H), s(S), l(L) {}
 };

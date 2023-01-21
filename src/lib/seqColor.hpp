@@ -8,9 +8,10 @@
 
 class seqColor
 {
-   private:
+   public:
 
-   inline constexpr void rgb2seq(uint8_t &x)
+   // rgb to sequence digit
+   static inline constexpr void rgb2seq(uint8_t &x)
    {
       if(x < 47)x=0;
       else if(x >= 47 && x < 115)x=1;
@@ -20,7 +21,8 @@ class seqColor
       else x=5;
    }
 
-   inline constexpr void seq2rgb(uint8_t &x)
+   // sequence digit to rgb
+   static inline constexpr void seq2rgb(uint8_t &x)
    {
       if(x==0)x=0;
       else if(x==1)x=95;
@@ -30,16 +32,15 @@ class seqColor
       else if(x==5)x=255;
    }
 
-   public:
    uint8_t color;
-
-   inline constexpr seqColor() : color(0) {}
    
+   // print sequence color value
    inline constexpr void print()
    {
       printf("%d\n",color);
    }
 
+   // from RGB to sequence color
    inline constexpr void fromRGB(uint8_t r,uint8_t g,uint8_t b)
    {
       rgb2seq(r);
@@ -48,6 +49,7 @@ class seqColor
       color = (36*r)+(6*g)+b+16;
    }
 
+   // from sequence color to RGB
    inline constexpr void toRGB(uint8_t &r,uint8_t &g,uint8_t &b)
    {
       color -= 16;
@@ -67,11 +69,16 @@ class seqColor
       seq2rgb(b);
    }
 
+   // default constructor
+   inline constexpr seqColor() : color(0) {}
+
+   // setter constructor
    inline constexpr seqColor(uint8_t Color)
    {
       color = Color;
    }
 
+   // setter constructor
    inline constexpr seqColor(uint8_t r,uint8_t g,uint8_t b)
    {
       fromRGB(r,g,b);

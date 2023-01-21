@@ -9,20 +9,21 @@
 
 #include "sz.hpp"
 
-namespace cli
+class cli
 {
+    public:
 
     #pragma region Properties
 
-    bool cursorVisibility;
-    int width;
-    int height;
+    static bool cursorVisibility;
+    static int width;
+    static int height;
 
     #pragma endregion
 
     #pragma region Enums
 
-    enum style : uint8_t
+    enum styles : uint8_t
     {
         Bold = 1,
         Low_Intensity = 2,
@@ -56,8 +57,9 @@ namespace cli
     #pragma endregion
 
     #pragma region Methods
-
-    std::string getColor(unsigned foreground, unsigned background, unsigned style)
+    
+    // get console control color sequence
+    static std::string getColor(unsigned foreground, unsigned background, unsigned style)
     {
         // minimal reqs "\e[01;38;05;10mUSAS\e[m112"
 
@@ -90,83 +92,91 @@ namespace cli
         return result;
     }
 
-    winsize getSize()
+    // write console control color sequence in console
+    static void beginColor(unsigned foreground, unsigned background, unsigned style)
+    {
+        printf("%s",getColor(foreground,background,style).c_str());
+    }
+    
+    // write console control reset color sequence in console
+    static void endColor()
+    {
+        printf("%s","\e[m");
+    }
+
+    // get terminal buffer size
+    static inline winsize getSize()
     {
         struct winsize w;
         ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
         return w;
     }
 
-    sz getSz()
+    // get terminal buffer size to sz format
+    static inline sz getSz()
     {
-        struct winsize w;
-        ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+        auto w = getSize();
         return sz(w.ws_col,w.ws_row);
     }
 
-    inline void clear()
+    // clear CCS
+    static inline void clear()
     {
         printf("\ec");
     }
 
-    inline void hideCursor()
+    // hide cursor CCS
+    static inline void hideCursor()
     {
         printf("\e[?25l");
         cursorVisibility = 0;
     }
 
-    inline void showCursor()
+    // show cursor CCS
+    static inline void showCursor()
     {
         printf("\e[?25h");
         cursorVisibility = 1;
     }
 
-    inline void setCursor(unsigned x, unsigned y)
+    // set cursor CCS
+    static inline void setCursor(unsigned x, unsigned y)
     {
         printf("\e[%d;%dH",y,x);
     }
 
-    inline void setText(unsigned x, unsigned y, const char* str)
-    {
-         printf("\e[%d;%dH%s",y,x,str);
-    }
-
-    inline const void setChar(unsigned x, unsigned y, char8_t ch) noexcept(true)
+    // set cursor CCS and write char
+    static inline const void setChar(unsigned x, unsigned y, char ch) noexcept(true)
     {
         printf("\e[%d;%dH%c",y,x,ch);
     }
 
-    inline const void setText(unsigned x, unsigned y, std::string str) noexcept(true)
+    // set cursor CCS and write text
+    static inline const void setText(unsigned x, unsigned y, std::string str) noexcept(true)
     {
         printf("\e[%d;%dH%s",y,x,str.c_str());
     }
 
-    void beginColor(unsigned foreground, unsigned background, unsigned style)
-    {
-        printf("%s",getColor(foreground,background,style).c_str());
-    }
-    
-    void endColor()
-    {
-        printf("%s","\e[m");
-    }
-
-    inline const void up()
+    // write CCS UP
+    static inline const void up()
     {
         printf("\e[A");
     }
 
-    inline const void down()
+    // write CCS DOWN
+    static inline const void down()
     {
        printf("\e[E");
     }
 
-    inline const void right()
+    // write CCS RIGHT
+    static inline const void right()
     {
         printf("\e[C");
     }
 
-    inline const void left()
+    // write CCS LEFT
+    static inline const void left()
     {
         printf("\e[D");
     }

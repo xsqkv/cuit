@@ -20,7 +20,6 @@ class control
     pos position;
     control* parent;
     
-    
     virtual void draw() {}
 
     void setPos(pos _pos)

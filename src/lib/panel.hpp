@@ -6,5 +6,6 @@
 
 class panel : public contentControl
 {
-    panel() {}
+    // default constructor
+    panel() : contentControl() {}
 };

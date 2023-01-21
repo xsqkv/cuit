@@ -6,10 +6,13 @@
 
 class button : public control
 {
-    enum class textAlign : uint8_t
+    enum textAlign : uint8_t
     {
         LEFT,
         CENTER,
         RIGHT
     };
+
+    // default constructor
+    button() : control() {}
 };

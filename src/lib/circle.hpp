@@ -4,19 +4,16 @@
 #include "shape.hpp"
 #include "cli.hpp"
 
-#include <cmath>
-
 class circle : public shape
 {
-    constexpr inline void drawPixel(int x ,int y, char8_t chr)
+    // draw pixel to terminal 
+    constexpr inline void drawPixel(int x ,int y, char chr)
     {
-        if(size.normed){
-            cli::setChar(x + position.x, y * fy + position.y, chr);
-        }else{
-            cli::setChar(x + position.x, y * fy + position.y, chr);
-        }
+        // draw pixel to terminal
+        cli::setChar(x + position.x, y * fy + position.y, chr);
     }
 
+    // set 8 points to the terminal
     constexpr inline void Plot8(int x, int y, int R)
     {
         const int nx = R - x;
@@ -30,7 +27,8 @@ class circle : public shape
         drawPixel(nx, y , ch);
         drawPixel(x , y , ch);
     }
-
+    
+    // set 4 points to the terminal
     constexpr inline void Plot4(int x, int y, int R)
     {
         const int nx = R - x;
@@ -45,10 +43,11 @@ class circle : public shape
         //drawPixel(x , y , ch);
     }
 
+    // draw filled circle
     constexpr inline void filled()
     {
-        int R = size.width; // Radius
-        float rq = R / 2.0;
+        const int R = size.width; // Radius
+        const float rq = R / 2.0;
 
         int x = 0;
         int y = rq; // circle length
@@ -65,10 +64,11 @@ class circle : public shape
         }
     }
 
+    // draw empty circle
     constexpr inline void empty()
     {
-        int R = size.width; // Radius
-        float rq = R / 2.0;
+        const int R = size.width; // Radius
+        const float rq = R / 2.0;
 
         int x = 0;
         int y = rq; // circle length
@@ -85,18 +85,26 @@ class circle : public shape
         }
     }
 
+    // ratio height / width
     float fy;
+    // is circle filled variable
     bool is_filled;
 
     public:
+    // terminal height / width pixel ratio
     static constexpr float norm = 79.0 / 34.0; // pixel on pixel division
 
+    // draw function
     constexpr inline void draw() override
     {
         is_filled ? filled() : empty(); 
     }
 
-    inline circle() : shape() { fy = (float)size.height / (float)size.width; }
+    // default constructor
+    inline circle() : shape()
+    {
+        fy = static_cast<float>(size.height) / static_cast<float>(size.width);
+    }
 
     inline circle(sz SZ, pos POS, bool Filled = 0)
     {
@@ -106,10 +114,10 @@ class circle : public shape
         is_filled = Filled;
     }
 
-    inline circle(sz SZ, pos POS, char8_t CH, bool Filled = 0)
+    inline circle(sz SZ, pos POS, char CH, bool Filled = 0)
     {
         size = SZ;
-        fy = (float)size.height / (float)size.width;
+        fy = static_cast<float>(size.height) / static_cast<float>(size.width);
         position = POS;
         ch = CH;
         is_filled = Filled;

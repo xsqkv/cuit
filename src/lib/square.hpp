@@ -7,27 +7,37 @@
 class square
 {
     public:
-    char8_t ch;
-    int n;
-    pos Pos;
-    bool norm;
+    char ch;
+    unsigned n;
+    pos position;
+    bool normed;
     static constexpr float coef = 79.0/34.0; // pixel on pixel division
 
+    // static draw function
+    static constexpr inline void draw(pos Position, unsigned N, char CH)
+    {
+        std::string str;
+        const unsigned W = N * coef;
+        
+        for(int i = 0; i < N; ++i)
+            str += std::string(W, CH) + "\e[1B\e["+std::to_string(W)+"D";
+
+        cli::setText(Position.x, Position.y, str);
+    } 
+
+    // draw function
     constexpr inline void draw()
     {
-        int x;
-        if(norm) x = n * coef;
-        else x = n;
-        std::string xline;
-        for(int i=0;i < x;++i) xline += ch;
-        for(int y = Pos.y; y < Pos.y+n;++y) cli::setText(Pos.x,y,xline);
+        // call static draw function
+        draw(position, n, ch);
     }
 
-    constexpr inline square(int N=5, bool normed=1, char8_t CH='#',pos POS={5,5,1})
+    // setter constructor
+    constexpr inline square(pos POS={5,5,1}, int N=5, char CH='#', bool Normed=1)
     {
-        ch = CH;
+        position = POS;
         n = N;
-        Pos = POS;
-        norm=normed;
+        ch = CH;
+        normed = Normed;
     }
 };

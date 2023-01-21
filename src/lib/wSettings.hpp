@@ -18,6 +18,7 @@ class wSettings
     char leftDownCorner;
     char rightDownCorner;
 
+    // default constructor
     wSettings() :
     fill('#'),
     topBar(0),

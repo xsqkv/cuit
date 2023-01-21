@@ -11,17 +11,21 @@ class shape
     sz size;
     pos position;
 
+    // virtual draw function
     constexpr inline virtual void draw() = 0;
 
+    // default constructor
     inline shape() : size({5,5,1}) , ch('#') {}
 
-    inline shape(sz SIZE, char8_t CH)
+    // setter constructor
+    inline shape(sz SIZE, char CH)
     {
         ch = CH;
         size = SIZE;
     }
 
-    inline shape(int w, int h, char8_t CH)
+    // setter constructor
+    inline shape(int w, int h, char CH)
     {
         ch = CH;
         size = sz(w,h);

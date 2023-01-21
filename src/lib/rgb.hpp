@@ -7,12 +7,14 @@
 
 #include "hsl.hpp"
 #include "hsv.hpp"
-
 #include "seqColor.hpp"
+#include "utils.hpp"
+
 class rgb
 {
     private:
 
+    // rgb to sequence digit
     inline constexpr void rgb2seq(uint8_t &n)
     {
         if(n < 47)n=0;
@@ -23,6 +25,7 @@ class rgb
         else n=5;
     }
 
+    // sequence digit to rgb
     inline constexpr void seq2rgb(uint8_t &n)
     {
         if(n==0)n=0;
@@ -42,11 +45,13 @@ class rgb
     float pg;
     float pb;
     
+    // print rgb color function
     inline constexpr void print()
     {
         printf("%d %d %d \n",r,g,b);
     }
 
+    // count rgb percents
     inline constexpr void countPercents()
     {
         pr = r / 255.0;
@@ -55,6 +60,7 @@ class rgb
     }
 
 
+    // convert to sequnce color
     inline constexpr uint8_t toSeq()
     {
         rgb2seq(r);
@@ -63,7 +69,7 @@ class rgb
         return (36*r)+(6*g)+b+16;
     }
 
-
+    // convert from sequnce color
     inline constexpr void fromSeq(uint8_t sequence)
     {
         sequence -= 16;
@@ -84,6 +90,7 @@ class rgb
     }
 
 
+    // get rgb from HSL
     inline constexpr void fromHSL(hsl& val)
     {
         float h = val.h;
@@ -112,6 +119,7 @@ class rgb
         countPercents();
     }
 
+    // get HSL from rgb
     inline constexpr void toHSL(hsl& val)
     {
         float R = pr;
@@ -133,6 +141,8 @@ class rgb
         val.s = (mx - mn) / (1 - std::abs(1 - (mx+mn)));
     }
 
+
+    // get rgb from HSV
     inline constexpr void fromHSV(hsv& val)
     {
         float h=val.h;
@@ -156,6 +166,7 @@ class rgb
         countPercents();
     }
 
+    // get HSV from rgb
     inline constexpr void toHSV(hsv& val)
     {
         float R = pr;
@@ -178,6 +189,7 @@ class rgb
         val.v = mx;
     }
 
+    // get rgb from HEX
     inline constexpr void fromHEX(char* hex)
     {
         int val = from16to10(hex);
@@ -186,6 +198,7 @@ class rgb
         b = val;
     }
 
+    // get HEX from rgb
     inline char* toHex()
     {
         int val;
@@ -195,8 +208,10 @@ class rgb
         return from10to16(val);
     }
 
+    // default constructor
     inline constexpr rgb() : r(0),g(0),b(0) , pr(0),pg(0),pb(0) {}
 
+    // setter constructor
     inline constexpr rgb(uint8_t red, uint8_t green, uint8_t blue)
     {
         r=red;
@@ -206,6 +221,7 @@ class rgb
         countPercents();
     }
 
+    // setter constructor
     inline constexpr rgb(char* hex)
     {
         fromHEX(hex);

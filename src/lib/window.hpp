@@ -19,6 +19,7 @@ class window : public contentControl
 
     wSettings settings;
 
+    // overriden draw function
     void draw() override
     {
         std::string win;
@@ -90,12 +91,14 @@ class window : public contentControl
         cli::setText(this->position.x, this->position.y, win);
     }
 
+    // hide window fucntion
     void hide()
     {
         visible = 0; // set hidden flag
         cli::clear(); // clear all term buff
     }
 
+    // show windows function
     void show()
     {
         visible = 1;
@@ -103,28 +106,33 @@ class window : public contentControl
         for(auto& ctrl : childs) { ctrl->draw(); }
     }
 
+    // default constructor
     window() : contentControl() 
     {
         //elements.push_back();
     }
 
+    // setter contructor
     window(unsigned width, unsigned height,bool normed=0) : window()
     {
         size = sz(width,height,normed);
         draw();
     }
 
+    // setter constructor
     window(unsigned width, unsigned height, bool size_normed, unsigned pos_x, unsigned pos_y, bool pos_normed) : window()
     {
         size = sz(width,height,size_normed);
         position = pos(pos_x,pos_y,pos_normed);
     }
 
+    // setter constructor
     window(sz SIZE) : window()
     {
         size = SIZE;
     }
 
+    // setter constructor
     window(sz SIZE, pos POSITION) : window()
     {
         size = SIZE;

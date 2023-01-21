@@ -7,8 +7,9 @@
 class rect : public shape
 {
     public:
-
-    static void drawRect(unsigned x, unsigned y, unsigned w, unsigned h, char ch)
+    
+    // static draw rectangle function
+    static inline void drawRect(unsigned x, unsigned y, unsigned w, unsigned h, char ch)
     {
         std::string str;
 
@@ -18,34 +19,36 @@ class rect : public shape
         cli::setText(x, y, str);
     }
 
+    // draw rectangle function
     constexpr inline void draw() override
     {
-        std::string str;
-
-        for(int i = 0; i < size.height; ++i)
-            str += std::string(size.width, ch) + "\e[1B\e["+std::to_string(size.width)+"D";
-
-        cli::setText(position.x, position.y, str);
+        // call static draw rectangle function
+        drawRect(position.x, position.y, size.width, size.height, ch);
     }
 
+    // default constructor
     inline rect() : shape() {}
 
+    // setter constructor
     inline rect(int w,int h) : rect()
     {
         size = sz(w,h);
     }
 
+    // setter constructor
     inline rect(sz SIZE) : rect()
     {
         size = SIZE;
     }
 
+    // setter constructor
     inline rect(int W,int H,char CH)
     {
         size = sz(W,H);
         ch = CH;
     }
 
+    // setter constructor
     inline rect(sz SIZE,char CH)
     {
         size = SIZE;

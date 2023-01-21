@@ -7,10 +7,11 @@
 #include <ctime>
 
 using namespace std;
-using namespace chrono;
+using namespace chrono; // system_clock
 
 namespace debug
 {
+    // get function run time
     template<class t>
     constexpr inline double time(t a(...)) noexcept(true)
     {
@@ -25,6 +26,7 @@ namespace debug
         return time;
     }
 
+    // comparing functions run time
     template<class t>
     constexpr inline void compare(t a(...), t b(...)) noexcept(true)
     {
@@ -34,6 +36,7 @@ namespace debug
         printf(" ms\tFunction 2: ",time(b), " ms\n");
     }
 
+    // capacity of variables
     inline void var_test() noexcept(true)
     {
         printf("       char: %lu bytes\n",sizeof(char));

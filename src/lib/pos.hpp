@@ -10,7 +10,6 @@ class pos
 {
     public:
     unsigned x, y;
-    bool normed;
     
     enum class place : uint8_t
     {
@@ -27,17 +26,16 @@ class pos
         BOTTOM_LEFT,   BOTTOM_MIDDLE,   BOTTOM_RIGHT
     };
     
+    // terminal height / width pixel ratio
     static constexpr float norm = 79.0/34.0; // pixel on pixel division
 
-    constexpr inline pos() : x(1),y(1),normed(1) {}
+    //default constructor
+    constexpr inline pos() : x(1),y(1) {}
 
+    // setter constructor
     constexpr inline pos(unsigned X, unsigned Y, bool Normed) : x(X), y(Y)
     {
-        if(Normed)
-        {
-            x *= norm;
-            normed = 1;
-        }
-        else normed = 0;
+        // if position normed multiply X on height/width ratio
+        if(Normed) x *= norm;
     }
 };

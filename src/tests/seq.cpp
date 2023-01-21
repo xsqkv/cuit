@@ -1,7 +1,5 @@
 #include "../lib/cuit.hpp"
 
-using namespace cli;
-
 int main()
 {
 	cli::beginColor(12,0,0);

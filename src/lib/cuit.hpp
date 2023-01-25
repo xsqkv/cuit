@@ -27,3 +27,4 @@
 #include "window.hpp" // add window header file
 #include "wSettings.hpp" // add wSettings header file
 #include "debug.hpp" // add debug header file
+#include "ccs.hpp" // add ccs header file

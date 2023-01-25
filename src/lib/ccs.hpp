@@ -129,7 +129,7 @@ namespace ccs
 			// ESC- but not CSI-sequences
 
 			// Reset.
-			const char* const RIS = (std::string(ESC) + 'c').c_str();
+			constexpr char* const RIS = (std::string(ESC) + 'c').c_str();
 
 			// Linefeed.
 			const char* const IND = (std::string(ESC) + 'D').c_str();

@@ -2,5 +2,6 @@
 
 int main()
 {
-    printf("%s01;38;05;128mABOBA%sm", ccs::ESC, ccs::ESC);
+    printf(ccs::RIS); // Clear
+    printf("%s01;38;05;128mABOBA%sm\n", ccs::CSI, ccs::CSI);
 }

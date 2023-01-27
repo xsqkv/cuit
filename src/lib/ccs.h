@@ -236,7 +236,9 @@
 				indicates the red/green/blue values (0–255).
 				ESC ] R: reset palette
 			*/
-			#define OSC   ESC "]"
+			#define OSC(N,R,G,B)   ESC "]" "P" #N #R #G #B
+
+			#define RSTPALETTE ESC "]" "R"
 
 		#pragma endregion
 
@@ -302,7 +304,7 @@
 			#define HPR(N)   CSI #N "a"
 
 			// Answer ESC [ ? 6 c: I am a VT102.
-			#define DA  CSI c
+			#define DA  CSI "c"
 
 			// Move cursor to the indicated row, current column.
 			#define VPA(N)   CSI #N "d"
@@ -523,8 +525,14 @@
 			// 256 color: values 0..15 are IBGR (black, red, green, ... white), 16..231 a 6x6x6 color cube, 232..255 a grayscale ramp
 			#define x256COLORSEQ(TYPE,COLOR) #TYPE ";5;" #COLOR
 
+			// 256 color: values 0..15 are IBGR (black, red, green, ... white), 16..231 a 6x6x6 color cube, 232..255 a grayscale ramp With Macro expansion
+			#define EX_x256COLORSEQ(TYPE,COLOR) x256COLORSEQ(TYPE,COLOR)
+
 			// 24-bit color, r/g/b components are in the range 0..255
 			#define x256COLORRGB(TYPE,R,G,B) #TYPE ";2;" #R ";" #G ";" #B
+
+			// 24-bit color, r/g/b components are in the range 0..255 With Macro expansion
+			#define EX_x256COLORRGB(TYPE,R,G,B) x256COLORRGB(TYPE,R,G,B)
 
 		#pragma endregion
 

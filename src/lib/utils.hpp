@@ -5,7 +5,7 @@
 #include<iostream>
 #include<cstring>
 
-const char* s = "0123456789ABCDEF";
+const char* hex_str = "0123456789ABCDEF";
 
 inline char* lower(char* x)
 {
@@ -116,7 +116,7 @@ inline int from16to10(char* x)
     int result = 0;
     for(int i = 0;i < sz;i++)
     {
-        result += iof(s,x[i]) * pow(16,sz - i - 1);
+        result += iof(hex_str,x[i]) * pow(16,sz - i - 1);
     }
     return result;
 }
@@ -128,7 +128,7 @@ inline int from16to10(const char* X)
     int result = 0;
     for(int i = 0;i < sz;i++)
     {
-        result += iof(s,x[i]) * pow(16,sz - i - 1);
+        result += iof(hex_str,x[i]) * pow(16,sz - i - 1);
     }
     return result;
 }
@@ -162,7 +162,7 @@ inline char* from10to16(int x)
     if(!x) { res = "0"; result = (char*)malloc(res.size()); result = (char*)res.c_str();return result; }
     while(x)
     {
-        res = s[x % 16] + res;
+        res = hex_str[x % 16] + res;
         x /= 16;
     }
     result = (char*)malloc(res.size());
@@ -177,7 +177,7 @@ inline const char* from10to16_2(int x)
     if(!x) { res = "0"; result = (const char*)malloc(res.size()); result = (const char*)res.c_str();return result; }
     while(x)
     {
-        res = s[x % 16] + res;
+        res = hex_str[x % 16] + res;
         x /= 16;
     }
     result = (const char*)malloc(res.size());

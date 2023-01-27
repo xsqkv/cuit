@@ -19,12 +19,12 @@ cd ../../;
 
 function SUCCESS()
 {
-    printf "\e[01;38;05;10m%s\e[0m\n\n" "Success Compiling!";
+    printf "\e[01;38;05;10m%s\e[0m\n\n" "Success Compiling! ✅";
 }
 
 function ERRORS()
 {
-    printf "\e[01;38;05;1m%s\e[0m\n\n" "An Errors Occurred!";
+    printf "\e[01;38;05;1m%s\e[0m\n\n" "An Errors Occurred! 😥";
 }
 
 function compile_tests()

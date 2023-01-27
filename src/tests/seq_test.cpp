@@ -2,6 +2,13 @@
 
 int main()
 {
-    printf(ccs::RIS); // Clear
-    printf("%s01;38;05;128mABOBA%sm\n", ccs::CSI, ccs::CSI);
+    //  Make comfy lib for console codes:
+    //      Namespaces don't work with macro
+    //      So long macro names
+
+    // Note: "Str1" "Str2"; works like const concatenation and equals "Str1Str2".
+
+    printf(RIS); // Clear
+
+    printf("");
 }

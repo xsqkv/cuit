@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "cuit.hpp"
+#include "../cuit.hpp"
 
 class label : public control
 {

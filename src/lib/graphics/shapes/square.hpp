@@ -1,8 +1,8 @@
 // square class file
 
 #pragma once
-#include "pos.hpp"
-#include "cli.hpp"
+#include "../../pos.hpp"
+#include "../../cli.hpp"
 
 class square
 {

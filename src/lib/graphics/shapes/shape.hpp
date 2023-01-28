@@ -1,8 +1,8 @@
 // shape class file
 
 #pragma once
-#include "sz.hpp"
-#include "pos.hpp"
+#include "../../sz.hpp"
+#include "../../pos.hpp"
 
 class shape
 {

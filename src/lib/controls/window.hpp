@@ -5,14 +5,13 @@
 #include<iostream>
 
 #include "contentControl.hpp"
-#include "wSettings.hpp"
+#include "../wSettings.hpp"
+#include "../graphics/shapes/rect.hpp"
 
 
 class window : public contentControl
 {
-    protected:
-    bool topMost;
-    bool hasTitle;
+    private:
     std::string title;
 
     public:
@@ -24,7 +23,7 @@ class window : public contentControl
     {
         std::string win;
 
-        // if fill variable not null draw rect
+        // if only fill variable not null draw rect
         if( settings.fill
             && !settings.leftTopCorner
             && !settings.topBar
@@ -91,39 +90,24 @@ class window : public contentControl
         cli::setText(this->position.x, this->position.y, win);
     }
 
-    // hide window fucntion
-    void hide()
-    {
-        visible = 0; // set hidden flag
-        cli::clear(); // clear all term buff
-    }
-
     // show windows function
-    void show()
+    void show(bool flag) override
     {
-        visible = 1;
-        draw();
-        for(auto& ctrl : childs) { ctrl->draw(); }
+        if(flag)
+        {
+            visible = 1;
+            draw();
+            for(auto& ctrl : childs) { ctrl->draw(); }
+        }else{
+            visible = 0; // set hidden flag
+            cli::clear(); // clear all term buff
+        }
     }
 
     // default constructor
     window() : contentControl() 
     {
         //elements.push_back();
-    }
-
-    // setter contructor
-    window(unsigned width, unsigned height,bool normed=0) : window()
-    {
-        size = sz(width,height,normed);
-        draw();
-    }
-
-    // setter constructor
-    window(unsigned width, unsigned height, bool size_normed, unsigned pos_x, unsigned pos_y, bool pos_normed) : window()
-    {
-        size = sz(width,height,size_normed);
-        position = pos(pos_x,pos_y,pos_normed);
     }
 
     // setter constructor

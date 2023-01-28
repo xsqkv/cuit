@@ -1,0 +1,118 @@
+Constructors:
+	control()
+	control(height,width,x_pos,y_pos) -> control(Size,Position)
+	control(&ctrl)
+
+Methods:
+	draw(void)
+	show(bool)
+	update(void)
+	enable(bool)
+	focus(bool)
+
+Properties:
+	size
+	position
+
+	margin
+	anchor
+
+	align
+
+	focusable
+	focused
+
+	isAutoSizable
+	
+	isEnabled
+
+	isTopMost
+
+	isVisible
+	
+	isFixed
+
+	style // (bg,fg,esc-styles) chars, colors, pseudo with presets and custom setup
+
+	dBuffered
+
+	effect
+	
+	parent
+	controls // childs
+
+	sizable
+
+	cache
+	
+Events:
+	AutoSizeChanged
+	BackColorChanged
+	BackgroundImageChanged
+	BackgroundImageLayoutChanged
+	BindingContextChanged
+	CausesValidationChanged
+	ChangeUICues
+	Click
+	ClientSizeChanged
+	ContextMenuStripChanged
+	ControlAdded
+	ControlRemoved
+	CursorChanged
+	DataContextChanged
+	DockChanged
+	DoubleClick
+	DpiChangedAfterParent
+	DpiChangedBeforeParent
+	DragDrop
+	DragEnter
+	DragLeave
+	DragOver
+	EnabledChanged
+	Enter
+	FontChanged
+	ForeColorChanged
+	GiveFeedback
+	GotFocus
+	HandleCreated
+	HandleDestroyed
+	HelpRequested
+	ImeModeChanged
+	Invalidated
+	KeyDown
+	KeyPress
+	KeyUp
+	Layout
+	Leave
+	LocationChanged
+	LostFocus
+	MarginChanged
+	MouseCaptureChanged
+	MouseClick
+	MouseDoubleClick
+	MouseDown
+	MouseEnter
+	MouseHover
+	MouseLeave
+	MouseMove
+	MouseUp
+	MouseWheel
+	Move
+	PaddingChanged
+	Paint
+	ParentChanged
+	PreviewKeyDown
+	QueryAccessibilityHelp
+	QueryContinueDrag
+	RegionChanged
+	Resize
+	RightToLeftChanged
+	SizeChanged
+	StyleChanged
+	SystemColorsChanged
+	TabIndexChanged
+	TabStopChanged
+	TextChanged
+	Validated
+	Validating
+	VisibleChanged

@@ -18,6 +18,58 @@ class wSettings
     char leftDownCorner;
     char rightDownCorner;
 
+    void setCorners(char chr)
+    {
+        leftTopCorner = chr;
+        rightTopCorner = chr;
+        leftDownCorner = chr;
+        rightDownCorner = chr;
+    }
+
+    void setUpCorners(char chr)
+    {
+        leftTopCorner = chr;
+        rightTopCorner = chr;
+    }
+
+    void setDownCorners(char chr)
+    {
+        leftDownCorner = chr;
+        rightDownCorner = chr;
+    }
+
+    void setLeftCorners(char chr)
+    {
+        leftTopCorner = chr;
+        leftDownCorner = chr;
+    }
+
+    void setRightCorners(char chr)
+    {
+        rightTopCorner = chr;
+        rightDownCorner = chr;
+    }
+
+    void setBars(char chr)
+    {
+        topBar = chr;
+        leftBar = chr;
+        rightBar = chr;
+        downBar = chr;
+    }
+
+    void setVBars(char chr)
+    {
+        leftBar = chr;
+        rightBar = chr;
+    }
+
+    void setHBars(char chr)
+    {
+        topBar = chr;
+        downBar = chr;
+    }
+
     // default constructor
     wSettings() :
     fill('#'),

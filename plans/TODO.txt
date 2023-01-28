@@ -7,6 +7,8 @@ asciitor:
     convert ascii to imgs
     translate 
 
+asciiker
+
 cui library for asciiker:
     good work with images
     work with click capturing

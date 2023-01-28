@@ -559,117 +559,117 @@ int main()
 
 	#ifndef __linux__
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Single shift 2: ");
 		getchar();
 		printf(SS2);// Single shift 2. (Select G2 character set for the next character only.)
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Single shift 3: ");
 		getchar();
 		printf(SS3);// Single shift 3. (Select G3 character set for the next character only.)
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Device control string: ");
 		getchar();
 		printf(DCS);// Device control string (ended by ESC \)
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Start of string: ");
 		getchar();
 		printf(SOS);// Start of string.
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Privacy message: ");
 		getchar();
 		printf(PM);// Privacy message (ended by ESC \)
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("String terminator: ");
 		getchar();
 		printf(ST);// String terminator
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Designate G2 character set: ");
 		getchar();
 		printf(DG2CS);// Designate G2 character set
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Designate G3 character set: ");
 		getchar();
 		printf(DG3CS);// Designate G3 character set
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Set Icon Name And Window Title: ");
 		getchar();
 		printf(setIconNameAndWindowTitle(TXT));
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Set Icon Name: ");
 		getchar();
 		printf(setIconName(TXT));
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Set Window Title: ");
 		getchar();
 		printf(setWindowTitle(TXT));
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Set Ansi Color Num To Txt: ");
 		getchar();
 		printf(setAnsiColorNumToTxt(NUM, TXT));
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Set Dynamic Text Color To Txt: ");
 		getchar();
 		printf(setDynamicTextColorToTxt(TXT));
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Change Log File To Name: ");
 		getchar();
 		printf(changeLogFileToName(NAME));
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Set Font To Fn: ");
 		getchar();
 		printf(setFontToFn(FN));
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Cursor to lower left corner of screen: ");
 		getchar();
 		printf(CTLLCOS);// Cursor to lower left corner of screen (if enabled by xterm(1)s hpLowerleftBugCompat resource)
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Locks memory above the cursor: ");
 		getchar();
 		printf(LMATC);// Memory lock (per HP terminals). Locks memory above the cursor.
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Memory unlock: ");
 		getchar();
 		printf(MEMUNLCK);// Memory unlock (per HP terminals).
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Invoke the G2 character set: ");
 		getchar();
 		printf(LS2);// Invoke the G2 character set.
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Invoke the G3 character set: ");
 		getchar();
 		printf(LS3);// Invoke the G3 character set.
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Invoke the G3 character set as GR: ");
 		getchar();
 		printf(LS3R);// Invoke the G3 character set as GR.
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Invoke the G2 character set as GR: ");
 		getchar();
 		printf(LS2R);// Invoke the G2 character set as GR.
 		printf("\n");
 
-		printf("Set the cursor blink interval in milliseconds: ");
+		printf("Invoke the G1 character set as GR: ");
 		getchar();
 		printf(LS1R);// Invoke the G1 character set as GR.
 		printf("\n");

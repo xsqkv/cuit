@@ -1,0 +1,85 @@
+ASCII Constrols:
+    window
+    label - simple text
+    button - |||||||||
+              +---------+
+    textbox - | textbox |
+              +---------+
+    checkbox - [ ]  [x]
+    radiobutton - O - off @ - on
+    progressbar - ######OOOOOOO
+    trackbar - ========I========
+    numeric_up_down - 17|^|v|
+    groupbox - grouping controls together
+    date_time_picker
+    listbox - просто список
+	+-------+
+	|elem 1	|
+	|elem 2	|
+	|elem 3	|
+	|...	|
+	|..	|
+	+-------+
+    combobox - выпадающий список
+    listview - список со столбцами
+	+-------+-------+
+	|elems	|nums	|
+	+-------+-------+
+        |elem 1	|234	|
+        |elem 2 |632	|
+        |elem 3 |12	|
+        |...    |...	|
+        |..     |..	|
+        +-------+-------+
+    checklistbox - список с чек-боксами
+    treeview:
+	/
+	|-bin
+	|-usr
+	|-home-+-user1
+	|-var  |
+	|-sys  +-user2
+	|-etc
+	|-root
+	|-lib
+	|-dev
+	+-mnt
+    picturebox - ascii picture
+
+	#          #
+	 #       #
+	  ######
+    	##########
+ ##### ############ #####
+	##########
+	 #######
+       #	 #
+      #           #
+
+    tabstrip - 
+    panel - панель
+	+-----------------------+
+	|			|
+	| label			|
+	|			|
+	|	button		|
+	|			|
+	+-----------------------+
+    imagelist - 
+    notify_icon - 
+    tool_strip - 
+    status_strip - 
+
+Prepared controls(forms)
+    color picker
+    file picker
+    message box
+
+
+What need to do too:
+    Anchor
+    Autocomplete
+    Password char and Mask for textbox
+    Hide on leave mask char for textbox
+    Promptchar for textbox
+    

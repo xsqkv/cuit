@@ -112,13 +112,6 @@ class cli
         return w;
     }
 
-    // get terminal buffer size to sz format
-    static inline sz getSz()
-    {
-        auto w = getSize();
-        return sz(w.ws_col,w.ws_row);
-    }
-
     // clear CCS
     static inline void clear()
     {

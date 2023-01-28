@@ -2,18 +2,19 @@
 
 #pragma once
 
-#include "sz.hpp"
-#include "pos.hpp"
-#include "cli.hpp"
+#include "../sz.hpp"
+#include "../pos.hpp"
+#include "../cli.hpp"
 
 
 class control
 {
     public:
+    bool topMost;
     bool focusable;
     bool focused;
 
-    bool visible=0;
+    bool visible = 1;
     bool enabled;
     bool sizable;
     sz size;
@@ -38,7 +39,10 @@ class control
 
     control() 
     {
-        //parent->size = cli::getSz();
-        //parent->position = {0,0};
+        // Set global console buffer parent of all controls
+        
+        // auto w= cli::getSize();
+        // parent->size  = {w.ws_col,w.ws_row};
+        // parent->position = {0,0,0};
     }
 };

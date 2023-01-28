@@ -8,7 +8,7 @@
 #include "hsl.hpp"
 #include "hsv.hpp"
 #include "seqColor.hpp"
-#include "utils.hpp"
+#include "../utils.hpp"
 
 class rgb
 {

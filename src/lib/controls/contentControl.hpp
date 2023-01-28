@@ -11,6 +11,8 @@ class contentControl : public control
     // child poiner array
     std::vector<control*> childs;
 
+    virtual void show(bool) {}
+
     // add control to the content control
     void inline addControl(control& ctrl) noexcept
     {   

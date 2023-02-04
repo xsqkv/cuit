@@ -29,12 +29,10 @@ int main(int argc,char** argv)
     w.settings.setRightCorners('0');
 
     w.addControl(l);
-    
+
     w.show(1);
 
     getchar();
-
-    cerr << w.visible << '\n';
 
     return 0;
 }

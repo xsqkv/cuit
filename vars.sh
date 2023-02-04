@@ -4,7 +4,7 @@
 
 COMPILER=clang++
 CFLAGS="-O3
--std=c++20
+-std=c++2b
 -w"
 
 AR=llvm-ar

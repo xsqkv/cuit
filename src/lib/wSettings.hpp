@@ -6,17 +6,17 @@ class wSettings
 {
     public:
     
-    char fill;
+    char fill{'#'};
 
-    char topBar;
-    char leftBar;
-    char rightBar;
-    char downBar;
+    char topBar{'#'};
+    char leftBar{'#'};
+    char rightBar{'#'};
+    char downBar{'#'};
 
-    char leftTopCorner;
-    char rightTopCorner;
-    char leftDownCorner;
-    char rightDownCorner;
+    char leftTopCorner{'#'};
+    char rightTopCorner{'#'};
+    char leftDownCorner{'#'};
+    char rightDownCorner{'#'};
 
     void setCorners(char chr)
     {
@@ -70,16 +70,19 @@ class wSettings
         downBar = chr;
     }
 
+    void setAll(char chr)
+    {
+        fill = chr;
+        topBar = chr;
+        leftBar = chr;
+        rightBar = chr;
+        downBar = chr;
+        leftTopCorner = chr;
+        rightTopCorner = chr;
+        leftDownCorner = chr;
+        rightDownCorner = chr;
+    }
+
     // default constructor
-    wSettings() :
-    fill('#'),
-    topBar(0),
-    leftBar(0),
-    rightBar(0),
-    downBar(0),
-    leftTopCorner(0),
-    rightTopCorner(0),
-    leftDownCorner(0),
-    rightDownCorner(0)
-    {}
+    wSettings() {}
 };

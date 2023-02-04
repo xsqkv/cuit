@@ -7,6 +7,7 @@
 #include "contentControl.hpp"
 #include "../wSettings.hpp"
 #include "../graphics/shapes/rect.hpp"
+#include "../ccs.hpp"
 
 
 class window : public contentControl
@@ -23,7 +24,7 @@ class window : public contentControl
     {
         std::string win;
 
-        // if only fill variable not null draw rect
+        // if only fill variable not null draw rect // NEW if all variables is same - draw rect
         if( settings.fill
             && !settings.leftTopCorner
             && !settings.topBar
@@ -71,7 +72,7 @@ class window : public contentControl
             //draw right bar
             if(settings.rightBar) win += settings.rightBar;
             else win += settings.fill;
-            win += "\e[1B\e["+std::to_string(size.width)+"D";
+            win += "\e[1B\e["+std::to_string(size.width)+"D"; // CUD
         }
 
         //draw left down corner

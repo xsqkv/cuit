@@ -32,5 +32,5 @@
 
 #include "debug.hpp" // add debug header file
 #include "utils.hpp" // add utils header file
-#include "ccs.h" // add ccs header file
+#include "ccs.hpp" // add ccs header file
 #include "cli.hpp" // add cli header file

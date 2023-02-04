@@ -239,7 +239,7 @@ namespace ccs
 					indicates the red/green/blue values (0–255).
 					ESC ] R: reset palette
 				*/
-				char* OSC(const char * palette)
+				char* OSC(const char* palette)
 				{
 					return multicat(OSC_OUT,"\e]P", palette, "P");
 				}
@@ -255,47 +255,47 @@ namespace ccs
 				char ICH_OUT[8];
 
 				// Insert the indicated # of blank characters.
-				char* ICH(const char * n) { return multicat(ICH_OUT,"\e[", n, "@"); }
+				char* ICH(const char* n) { return multicat(ICH_OUT,"\e[", n, "@"); }
 
 				char CUU_OUT[8];
 
 				// Move cursor up the indicated # of rows.
-				char* CUU(const char * n) { return multicat(CUU_OUT,"\e[", n, "A"); }
+				char* CUU(const char* n) { return multicat(CUU_OUT,"\e[", n, "A"); }
 
 				char CUD_OUT[8];
 
 				// Move cursor down the indicated # of rows.
-				char* CUD(const char * n) { return multicat(CUD_OUT,"\e[", n, "B"); }
+				char* CUD(const char* n) { return multicat(CUD_OUT,"\e[", n, "B"); }
 
 				char CUF_OUT[8];
 
 				// Move cursor right the indicated # of columns.
-				char* CUF(const char * n) { return multicat(CUD_OUT,"\e[", n, "C"); }
+				char* CUF(const char* n) { return multicat(CUD_OUT,"\e[", n, "C"); }
 
 				char CUB_OUT[8];
 
 				// Move cursor left the indicated # of columns.
-				char* CUB(const char * n) { return multicat(CUB_OUT,"\e[", n, "D"); }
+				char* CUB(const char* n) { return multicat(CUB_OUT,"\e[", n, "D"); }
 
 				char CNL_OUT[8];
 
 				// Move cursor down the indicated # of rows, to column 1.
-				char* CNL(const char * n) { return multicat(CNL_OUT,"\e[", n, "E"); }
+				char* CNL(const char* n) { return multicat(CNL_OUT,"\e[", n, "E"); }
 
 				char CPL_OUT[8];
 
 				// Move cursor up the indicated # of rows, to column 1.
-				char* CPL(const char * n) { return multicat(CPL_OUT,"\e[", n, "F"); }
+				char* CPL(const char* n) { return multicat(CPL_OUT,"\e[", n, "F"); }
 
 				char CHA_OUT[8];
 
 				// Move cursor to indicated column in current row.
-				char* CHA(const char * n) { return multicat(CHA_OUT,"\e[", n, "G"); }
+				char* CHA(const char* n) { return multicat(CHA_OUT,"\e[", n, "G"); }
 
 				char CUP_OUT[8];
 
 				// Move cursor to the indicated row, column (origin at 1,1).
-				char* CUP(const char * x, const char * y) { return multicat(CUP_OUT,"\e[", y, ";", x, "H"); }
+				char* CUP(const char* x, const char* y) { return multicat(CUP_OUT,"\e[", y, ";", x, "H"); }
 
 				char ED_OUT[8];
 
@@ -305,7 +305,7 @@ namespace ccs
 				/*	1 - erase from start to cursor.
 					2 - erase whole display.
 					3 - erase whole display including scroll-back buffer (since Linux 3.0).	*/
-				char* ED(const char * n) { return multicat(ED_OUT,"\e[", n, "J"); }
+				char* ED(const char* n) { return multicat(ED_OUT,"\e[", n, "J"); }
 
 				char EL_OUT[8];
 
@@ -314,32 +314,32 @@ namespace ccs
 
 				/*1 - erase from start of line to cursor.
 				  2 - erase whole line.*/
-				char* EL(const char * n) { return multicat(EL_OUT,"\e[", n, "K"); }
+				char* EL(const char* n) { return multicat(EL_OUT,"\e[", n, "K"); }
 
 				char IL_OUT[8];
 
 				// Insert the indicated # of blank lines.
-				char* IL(const char * n) { return multicat(IL_OUT,"\e[", n, "L"); }
+				char* IL(const char* n) { return multicat(IL_OUT,"\e[", n, "L"); }
 
 				char DL_OUT[8];
 
 				// Delete the indicated # of lines.
-				char* DL(const char * n) { return multicat(DL_OUT,"\e[", n, "M"); }
+				char* DL(const char* n) { return multicat(DL_OUT,"\e[", n, "M"); }
 
 				char DCH_OUT[8];
 
 				// Delete the indicated # of characters on current line.
-				char* DCH(const char * n) { return multicat(DCH_OUT,"\e[", n, "P"); }
+				char* DCH(const char* n) { return multicat(DCH_OUT,"\e[", n, "P"); }
 
 				char ECH_OUT[8];
 
 				// Erase the indicated # of characters on current line.
-				char* ECH(const char * n) { return multicat(ECH_OUT,"\e[", n, "X"); }
+				char* ECH(const char* n) { return multicat(ECH_OUT,"\e[", n, "X"); }
 
 				char HPR_OUT[8];
 
 				// Move cursor right the indicated # of columns.
-				char* HPR(const char * n) { return multicat(HPR_OUT,"\e[", n, "a"); }
+				char* HPR(const char* n) { return multicat(HPR_OUT,"\e[", n, "a"); }
 
 				// Answer ESC [ ? 6 c: I am a VT102.
 				constexpr const char DA[] = "\e[c";
@@ -347,17 +347,17 @@ namespace ccs
 				char VPA_OUT[8];
 
 				// Move cursor to the indicated row, current column.
-				char* VPA(const char * n) { return multicat(VPA_OUT,"\e[", n, "d"); }
+				char* VPA(const char* n) { return multicat(VPA_OUT,"\e[", n, "d"); }
 
 				char VPR_OUT[8];
 
 				// Move cursor down the indicated # of rows.
-				char* VPR(const char * n) { return multicat(VPR_OUT,"\e[", n, "e"); }
+				char* VPR(const char* n) { return multicat(VPR_OUT,"\e[", n, "e"); }
 
 				char HVP_OUT[8];
 
 				// Move cursor to the indicated row, column.
-				char* HVP(const char * n) { return multicat(HVP_OUT,"\e[", n, "f"); }
+				char* HVP(const char* n) { return multicat(HVP_OUT,"\e[", n, "f"); }
 
 				char TBC_OUT[8];
 				
@@ -365,7 +365,7 @@ namespace ccs
 				char* TBC() { return multicat(TBC_OUT,"\e[g"); }
 
 				// 3 - Delete all tab stops.
-				char* TBC(const char * n) { return multicat(TBC_OUT,"\e[", n, "g"); }
+				char* TBC(const char* n) { return multicat(TBC_OUT,"\e[", n, "g"); }
 
 				/*
 					h   SM        Set Mode (see DEC Private Mode sequences).
@@ -384,12 +384,12 @@ namespace ccs
 					2 - set Num Lock LED
 					3 - set Caps Lock LED
 				*/ 
-				char* DECLL(const char * n) { return multicat(DECLL_OUT,"\e[", n, "q"); }
+				char* DECLL(const char* n) { return multicat(DECLL_OUT,"\e[", n, "q"); }
 
 				char DECSTBM_OUT[16];
 
 				// Set scrolling region; parameters are top and bottom row.
-				char* DECSTBM(const char * top, const char * bottom) { return multicat(DECSTBM_OUT,"\e[", top, ";", bottom, "r"); }
+				char* DECSTBM(const char* top, const char* bottom) { return multicat(DECSTBM_OUT,"\e[", top, ";", bottom, "r"); }
 
 				// Save cursor location.
 				constexpr const char SCL[] = "\e[s";
@@ -400,7 +400,7 @@ namespace ccs
 				char HPA_OUT[16];
 
 				// Move cursor to indicated column in current row.
-				char* HPA(const char * n) { return multicat(HPA_OUT,"\e[", n, "`"); }
+				char* HPA(const char* n) { return multicat(HPA_OUT,"\e[", n, "`"); }
 
 			#pragma endregion
 
@@ -580,11 +580,11 @@ namespace ccs
 				char x256COLORSEQ_OUT[8];
 
 				// 256 color: values 0..15 are IBGR (black, red, green, ... white), 16..231 a 6x6x6 color cube, 232..255 a grayscale ramp
-				char* x256COLORSEQ(const char* type,const char * color) { return multicat(x256COLORSEQ_OUT,";5;", color); }
+				char* x256COLORSEQ(const char* type,const char* color) { return multicat(x256COLORSEQ_OUT,";5;", color); }
 
 				char x256COLORRGB_OUT[16];
 				// 24-bit color, r/g/b components are in the range 0..255
-				char* x256COLORRGB(const char* type,const char * r,const char * g,const char * b) {
+				char* x256COLORRGB(const char* type,const char* r,const char* g,const char* b) {
 					return multicat(x256COLORRGB_OUT, type, ";2;", r, ";", g, ";", b);
 				}
 
@@ -599,7 +599,7 @@ namespace ccs
 				// 3 - DECCRM (default off): Display control chars.
 				// 4 - DECIM (default off): Set insert mode.
 				// 20 - LF/NL (default off): Automatically follow echo of LF, VT, or FF with CR.
-				char* DECCRM(const char * n) { return multicat(DECCRM_OUT,"\e[", n, "h"); }
+				char* DECCRM(const char* n) { return multicat(DECCRM_OUT,"\e[", n, "h"); }
 
 			#pragma endregion
 
@@ -611,7 +611,7 @@ namespace ccs
 
 				// 5 - Device status report (DSR): Answer is ESC [ 0 n (Terminal OK).
 				// 6 - Cursor position report (CPR): Answer is ESC [ y ; x R, where x,y is the cursor location.
-				char* DSR(const char * n) { return multicat(DSR_OUT,"\e[", n, "n"); }
+				char* DSR(const char* n) { return multicat(DSR_OUT,"\e[", n, "n"); }
 
 			#pragma endregion
 
@@ -667,12 +667,12 @@ namespace ccs
 				char setUnderlineColor_OUT[8];
 
 				// Set color n as the underline color.
-				char* setUnderlineColor(const char * n) { return multicat(setUnderlineColor_OUT,"\e[1;", n, "]"); }
+				char* setUnderlineColor(const char* n) { return multicat(setUnderlineColor_OUT,"\e[1;", n, "]"); }
 
 				char setDimColor_OUT[8];
 
 				// Set color n as the dim color.
-				char* setDimColor(const char * n) { return multicat(setDimColor_OUT,"\e[2;", n, "]"); }
+				char* setDimColor(const char* n) { return multicat(setDimColor_OUT,"\e[2;", n, "]"); }
 
 				// Make the current color pair the default attributes.
 				constexpr const char MakeCurColorPairDefAttr[] = "\e[8]";
@@ -681,22 +681,22 @@ namespace ccs
 				char setScreenTimeoutColor_OUT[16];
 
 				// Set screen blank timeout to n minutes.
-				char* setScreenTimeoutColor(const char * minutes) { return multicat(setScreenTimeoutColor_OUT,"\e[9;", minutes, "]"); }
+				char* setScreenTimeoutColor(const char* minutes) { return multicat(setScreenTimeoutColor_OUT,"\e[9;", minutes, "]"); }
 
 				char setBellFrequencyInHz_OUT[16];
 
 				// Set bell frequency in Hz.
-				char* setBellFrequencyInHz(const char * n) { return multicat(setBellFrequencyInHz_OUT,"\e[10;", n, "]"); }
+				char* setBellFrequencyInHz(const char* n) { return multicat(setBellFrequencyInHz_OUT,"\e[10;", n, "]"); }
 
 				char setBellDurationMilli_OUT[16];
 
 				// Set bell duration in msec.
-				char* setBellDurationMilli(const char * milliseconds) { return multicat(setBellDurationMilli_OUT,"\e[11;", milliseconds, "]"); }
+				char* setBellDurationMilli(const char* milliseconds) { return multicat(setBellDurationMilli_OUT,"\e[11;", milliseconds, "]"); }
 
 				char bringSpecifiedConsoleToTheFont_OUT[16];
 
 				// Bring specified console to the front.
-				char* bringSpecifiedConsoleToTheFont(const char * n) { return multicat(bringSpecifiedConsoleToTheFont_OUT,"\e[12;", n, "]"); }
+				char* bringSpecifiedConsoleToTheFont(const char* n) { return multicat(bringSpecifiedConsoleToTheFont_OUT,"\e[12;", n, "]"); }
 
 				// Unblank the screen.
 				constexpr const char unblankTheScreen[] = "\e[13]";
@@ -704,7 +704,7 @@ namespace ccs
 				char setVesaPwrDwnInterval_OUT[16];
 
 				// Set the VESA powerdown interval in minutes.
-				char* setVesaPwrDwnInterval(const char * minutes) { return multicat(setVesaPwrDwnInterval_OUT,"\e[14;", minutes, "]"); }
+				char* setVesaPwrDwnInterval(const char* minutes) { return multicat(setVesaPwrDwnInterval_OUT,"\e[14;", minutes, "]"); }
 
 				// Bring the previous console to the front (since Linux 2.6.0).
 				constexpr const char bringThePreviousConsoleToTheFront[] = "\e[15]";
@@ -713,7 +713,7 @@ namespace ccs
 				char setCursorBlinkInterval_OUT[16];
 
 				// Set the cursor blink interval in milliseconds (since Linux 4.2).
-				char* setCursorBlinkInterval(const char * milliseconds) { return multicat(setCursorBlinkInterval_OUT,"\e[16;", milliseconds, "]"); }
+				char* setCursorBlinkInterval(const char* milliseconds) { return multicat(setCursorBlinkInterval_OUT,"\e[16;", milliseconds, "]"); }
 
 			#pragma endregion
 
@@ -879,7 +879,7 @@ namespace ccs
 
 					char* setWindowTitle(char* txt) { return multicat("\e]2;",txt,ST); }
 
-					char* setAnsiColorNumToTxt(const char * num, char* txt) { return multicat("\e]4;",num,";",txt, ST); }
+					char* setAnsiColorNumToTxt(const char* num, char* txt) { return multicat("\e]4;",num,";",txt, ST); }
 
 					char* setDynamicTextColorToTxt(char* txt) { return multicat("\e]10;", txt, ST); }
 

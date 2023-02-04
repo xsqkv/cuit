@@ -4,11 +4,10 @@ int main()
 {
     cli::clear();
 
-    printf(EXSTR(RED_FG)); // don't works
+    //setbuf(stdout,NULL); //SLOW
 
-    circle sqr({15,15,1},{5,5,1},'#'); // need to do cache string for shapes
-
-    printf(EXSTR(RIS)); // don't works
+    circle sqr({30,31,1},{5,5,1},'#'); // need to do cache string for shapes
 
     sqr.draw();
+
 }

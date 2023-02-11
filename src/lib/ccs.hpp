@@ -41,6 +41,7 @@ char* multicat(T a, U b, Targs... Fargs) // recursive variadic function
 
 namespace ccs
 {
+
 	#pragma region Name
 
 	// console_codes - Linux console escape and control sequences
@@ -1019,4 +1020,5 @@ namespace ccs
 	#pragma endregion
 
 	// This page is part of release 5.13 of the Linux man-pages project.
+	
 }

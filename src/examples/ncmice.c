@@ -15,9 +15,11 @@
  
 int main()
 {
+	//printf("\e[3h");
+
 	initscr();
-	cbreak();
-	noecho();
+	//cbreak();
+	//noecho();
 
 	// Enables keypad mode. This makes (at least for me) mouse events getting
 	// reported as KEY_MOUSE, instead as of random letters.

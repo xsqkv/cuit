@@ -7,7 +7,7 @@
 #include <time.h>
 #include <sys/types.h>
 
-#include "../lib/cuit.hpp"
+//#include "../lib/cuit.hpp"
 
 struct mevnt {
     unsigned char event, x, y;
@@ -17,98 +17,195 @@ struct kevnt {
     unsigned char key;
 };
 
+struct skevnt {
+    unsigned char specKey;
+};
+
 int Code1,Code2,Code3,Code4,Code5,Code6;
 mevnt m;
 kevnt k;
+skevnt s;
+
+enum specKeys : short
+{
+    NUL = 0,
+    SOH = 1,
+    STX = 2,
+    ETX = 3,
+    EOT = 4,
+    ENQ = 5,
+    ACK = 6,
+    BEL = 7,
+    BS  = 8,
+    HT  = 9,
+    LF  = 10,
+    VT  = 11,
+    FF  = 12,
+    CR  = 13,
+    SO  = 14,
+    SI  = 15,
+    DLE = 16,
+    DC1 = 17,
+    DC2 = 18,
+    DC3 = 19,
+    DC4 = 20,
+    NAK = 21,
+    SYN = 22,
+    ETB = 23,
+    CAN = 24,
+    EM  = 25,
+    SUB = 26,
+    ESC = 27,
+    FS  = 28,
+    GS  = 29,
+    RS  = 30,
+    US  = 31,
+
+    DEL = 127,
+
+    SPACE,
+    ESC,
+    F1,
+    F2,
+    F3,
+    F4,
+    F5,
+    F6,
+    F7,
+    F8,
+    F9,
+    F10,
+    F11,
+    F12,
+    INSERT,
+    DELETE,
+    HOME,
+    END,
+    PAGE_UP,
+    PAGE_DOWN,
+    TAB,
+    BACKSPACE,
+    ENTER,
+    FN,
+    MOD,
+    UP,
+    DOWN,
+    RIGHT,
+    LEFT,
+
+    SHIFT_,
+    ALT_,
+    CONTROL_,
+    CONTROL_SHIFT,
+};
+
+#define CONTROL_SPACE NUL
+#define CONTROL_A     SOH
+#define CONTROL_B     STX
+#define CONTROL_C     ETX
+#define CONTROL_D     EOT
+#define CONTROL_E     ENQ
+#define CONTROL_F     ACK
+#define CONTROL_G     BEL
+#define CONTROL_H     BS 
+#define CONTROL_I     HT 
+#define CONTROL_J     LF 
+#define CONTROL_K     VT 
+#define CONTROL_L     FF 
+#define CONTROL_M     CR 
+#define CONTROL_N     SO 
+#define CONTROL_O     SI 
+#define CONTROL_P     DLE
+#define CONTROL_Q     DC1
+#define CONTROL_R     DC2
+#define CONTROL_S     DC3
+#define CONTROL_T     DC4
+#define CONTROL_U     NAK
+#define CONTROL_V     SYN
+#define CONTROL_W     ETB
+#define CONTROL_X     CAN
+#define CONTROL_Y     EM 
+#define CONTROL_Z     SUB
+#define CONTROL_3     ESC
+#define CONTROL_4     FS 
+#define CONTROL_5     GS 
+#define CONTROL_6     RS 
+#define CONTROL_7     US
+#define CONTROL_8     DEL
 
 void capture()
 {
     for( ; ; )
     {
-        Code1 = getchar();
-        Code2 = getchar();
+        Code1 = getchar(); // GET FIRST CHAR
         if(Code1 == 27) // ESC
         {
-            Code3 = getchar();
-            if(Code3 == '[' && Code3 == 'M') // MOUSE EVENT
-            {
-                m.event = getchar();
-                m.x = getchar();
-                m.y = getchar();
+            Code2 = getchar();
+            if(Code2 == '[')
+            { 
+                Code3 = getchar();
+                if(Code3 == 'M') // MOUSE EVENT
+                {
+                    Code3 = getchar();
+                    m.event = getchar();
+                    m.x = getchar();
+                    m.y = getchar();
+                }
+                else if(Code3 == '1')
+                {
+
+                }
             }
-            else if(Code2 == 'O') // F1 - 4 Spec Keys
+            else if(Code2 == 'O') // F1-4 specKeys
             {
-                if()
+                if(Code3 == 'P')      s.specKey = specKeys::F1;
+                else if(Code3 == 'Q') s.specKey = specKeys::F2;
+                else if(Code3 == 'R') s.specKey = specKeys::F3;
+                else if(Code3 == 'S') s.specKey = specKeys::F4;
+            }
+            else if(Code2 == '1') // F5-8 specKeys
+            {
+                if(Code3 == '5')      s.specKey = specKeys::F5;
+                else if(Code3 == '7') s.specKey = specKeys::F6;
+                else if(Code3 == '8') s.specKey = specKeys::F7;
+                else if(Code3 == '9') s.specKey = specKeys::F8;
+            }
+            else if(Code2 == '2') // F9-12 specKeys
+            {
+                if(Code3 == '0')      s.specKey = specKeys::F9;
+                else if(Code3 == '1') s.specKey = specKeys::F10;
+                else if(Code3 == '3') s.specKey = specKeys::F11;
+                else if(Code3 == '4') s.specKey = specKeys::F12;
             }
         }   
-        else // KEYS
-        {
-            k.key = Code1;
-        }
+        else k.key = Code1; // KEYS
     }
 }
 
-enum keys : short
-{
-    SOH,
-    STX,
-    ETX,
-    EOT,
-    ENQ,
-    ACK,
-    BEL,
-    BS,
-    HT,
-    LF,
-    VT,
-    FF,
-    CR,
-    SO,
-    SI,
-    DLW,
-    DC1,
-    DC2,
-    DC3,
-    DC4,
-    NAK,
-    SYM,
-    ETB,
-    CAN,
-    EM,
-    SUB,
-    ESC,
-    PS,
-    GS,
-    RS,
-    US
-};
-
 int main()
 {
-    // 27 91 77 67 37 54 MOUSE
-    // 27 91 49 53 126 F?
-
-    // SHIFT: 1;2   ALT: 1;3   Ctrl: 1;5
-
     // setbuf(stdout,NULL); // turn off terninal bufferization
 
     struct termios oldterm, newterm;
     tcgetattr(STDIN_FILENO, &oldterm ); // get current term attrs
     newterm = oldterm; // set current term attrs to fill new variable
-    newterm.c_lflag &= ~( ICANON | ECHO ); // change variable attrs
+    newterm.c_lflag &= ~( ICANON | ECHO | ISIG); // change variable attrs
     tcsetattr(STDIN_FILENO, TCSANOW, &newterm); // set new term attrs
 
     printf("\e[?1003h"); // SET MOUSE REPORT
     printf("\e[?25l"); // HIDE CURSOR
 
-    window w({15,15,1},{4,4,1});
+    //window w({15,15,1},{4,4,1});
+    //w.settings.fill = ' ';
 
-    int d = 0;
+    char buffer;
 
-    w.settings.fill = ' ';
+    unsigned long long int code = 0;
 
     for(;;) {
-        d = getchar();
+        read(STDIN_FILENO,&buffer,1);
+        printf("%c = %d\n", buffer, buffer);
+
         // if(m.e == 64) // IF LMB PUSHED WRITE
         // {
         //     //printf("\e[%d;%dH\e[%dm###\e[m", m.y-32, m.x-32, rand() % 8 + 30);
@@ -122,8 +219,6 @@ int main()
         // }
         // else if(m.e == 34) // IF RMB PUSHED EXIT
         //     break;
-
-        printf("%c = (%d)\n", d, d);
     }
 
     tcsetattr(STDIN_FILENO, TCSANOW, &oldterm); // set old term attrs

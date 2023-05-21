@@ -1,23 +1,24 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <sys/ioctl.h>
 #include <termios.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <time.h>
+#include <linux/kd.h> // KDSKBMODE K_RAW K_XLATE
+#include <sys/ioctl.h>
 #include <sys/types.h>
 
 //#include "../lib/cuit.hpp"
 
-struct mevnt {
+struct mevnt { // MOUSE EVENT
     unsigned char event, x, y;
 };
 
-struct kevnt {
+struct kevnt { // KEY EVENT
     unsigned char key;
 };
 
-struct skevnt {
+struct skevnt { // SPECIAL KEY EVENT
     unsigned char specKey;
 };
 
@@ -64,7 +65,7 @@ enum specKeys : short
     DEL = 127,
 
     SPACE,
-    ESC,
+    //ESC,
     F1,
     F2,
     F3,
@@ -195,16 +196,19 @@ int main()
     printf("\e[?1003h"); // SET MOUSE REPORT
     printf("\e[?25l"); // HIDE CURSOR
 
+    ioctl(0, KDSKBMODE, K_RAW); // A program can request the raw scancodes
+
     //window w({15,15,1},{4,4,1});
     //w.settings.fill = ' ';
 
-    char buffer;
+    unsigned char buffer;
 
     unsigned long long int code = 0;
 
     for(;;) {
         read(STDIN_FILENO,&buffer,1);
         printf("%c = %d\n", buffer, buffer);
+        if(buffer == CONTROL_C) break;
 
         // if(m.e == 64) // IF LMB PUSHED WRITE
         // {
@@ -226,6 +230,10 @@ int main()
     printf("\e[?1003l"); // UNSET MOUSE REPORT
 
     printf("\e[?25h"); // SHOW CURSOR
+
+    ioctl(0, KDSKBMODE, K_XLATE); // Unset raw mode
+
+    //atexit();
 
     return 0;
 }

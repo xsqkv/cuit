@@ -95,6 +95,8 @@ function compile_shared_objects()
     done
 }
 
+#ENTRY POINT
+
 function main() 
 {
     compile_tests; # COMPILING TESTS

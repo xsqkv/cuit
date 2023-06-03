@@ -19,7 +19,7 @@ void catch_signal(int signal) { if(signal == SIGINT || signal == SIGQUIT) exit(0
 
 int main(int argc, char* argv[])
 {
-    char* path = "/dev/input/by-path/pci-0000:00:14.0-usb-0:4:1.0-event-kbd";
+    char* path = "/dev/input/by-path/pci-0000:00:14.0-usb-0:4:1.0-event-kbd";-
     fd_set rfds; 
     int res;
     int version = -1, ioret = -1; 

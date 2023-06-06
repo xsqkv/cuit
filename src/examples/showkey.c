@@ -1,9 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <getopt.h>
 #include <signal.h>
 #include <fcntl.h>
 #include <termios.h>
+#include <errno.h>
 #include <linux/kd.h>
 #include <linux/keyboard.h>
 #include <sys/ioctl.h>
@@ -36,15 +38,16 @@ get_mode(void) {
 	  case K_UNICODE:
 	    m = "UNICODE"; break;
 	  default:
-	    m = _("?UNKNOWN?"); break;
+	    m = ("?UNKNOWN?"); break;
 	}
-	printf(_("kb mode was %s\n"), m);
+	printf(("kb mode was %s\n"), m);
 	if (oldkbmode != K_XLATE) {
-	    printf(_("[ if you are trying this under X, it might not work\n"
+	    printf(("[ if you are trying this under X, it might not work\n"
 		     "since the X server is also reading /dev/console ]\n"));
 	}
 	printf("\n");
 }
+
 static void
 clean_up(void) {
 	if (ioctl(fd, KDSKBMODE, oldkbmode)) {
@@ -55,20 +58,78 @@ clean_up(void) {
 		perror("tcsetattr");
 	close(fd);
 }
+
+static int
+is_a_console(int fd) {
+	char arg;
+	arg = 0;
+	return (ioctl(fd, KDGKBTYPE, &arg) == 0
+		&& ((arg == KB_101) || (arg == KB_84)));
+}
+static int
+open_a_console(const char *fnam) {
+	int fd;
+	/*
+	 * For ioctl purposes we only need some fd and permissions
+	 * do not matter. But setfont:activatemap() does a write.
+	 */
+	fd = open(fnam, O_RDWR);
+	if (fd < 0 && errno == EACCES)
+		fd = open(fnam, O_WRONLY);
+	if (fd < 0 && errno == EACCES)
+		fd = open(fnam, O_RDONLY);
+	if (fd < 0)
+		return -1;
+	if (!is_a_console(fd)) {
+		close(fd);
+		return -1;
+	}
+	return fd;
+}
+int getfd(const char *fnam) {
+	int fd;
+	if (fnam) {
+		fd = open_a_console(fnam);
+		if (fd >= 0)
+			return fd;
+		fprintf(stderr, "Couldnt open %s\n", fnam);
+		exit(1);
+	}
+	fd = open_a_console("/dev/tty");
+	if (fd >= 0)
+		return fd;
+	fd = open_a_console("/dev/tty0");
+	if (fd >= 0)
+		return fd;
+	fd = open_a_console("/dev/vc/0");
+	if (fd >= 0)
+		return fd;
+	fd = open_a_console("/dev/console");
+	if (fd >= 0)
+		return fd;
+	for (fd = 0; fd < 3; fd++)
+		if (is_a_console(fd))
+			return fd;
+	fprintf(stderr, "Couldnt get a file descriptor referring to the console\n");
+	exit(1);		/* total failure */
+}
+
 static void
 die(int x) {
-	printf(_("caught signal %d, cleaning up...\n"), x);
+	printf(("caught signal %d, cleaning up...\n"), x);
 	clean_up();
 	exit(1);
 }
+
 static void
 watch_dog(int x) {
 	clean_up();
 	exit(0);
 }
+
 static void
 usage(void) {
-	fprintf(stderr, _(
+	fprintf(stderr, (
 "showkey version %s\n\n"
 "usage: showkey [options...]\n"
 "\n"
@@ -78,11 +139,12 @@ usage(void) {
 "	-a --ascii	display the decimal/octal/hex values of the keys\n"
 "	-s --scancodes	display only the raw scan-codes\n"
 "	-k --keycodes	display only the interpreted keycodes (default)\n"
-), VERSION);
+));
 	exit(1);
 }
+
 int
-main (int argc, char *argv[]) {
+main(int argc, char *argv[]) {
 	const char *short_opts = "haskV";
 	const struct option long_opts[] = {
 		{ "help",	no_argument, NULL, 'h' },
@@ -98,10 +160,10 @@ main (int argc, char *argv[]) {
 	struct termios new;
 	unsigned char buf[16];
 	int i, n;
-	set_progname(argv[0]);
-	setlocale(LC_ALL, "");
-	bindtextdomain(PACKAGE, LOCALEDIR);
-	textdomain(PACKAGE);
+	//set_progname(argv[0]);
+	// setlocale(LC_ALL, "");
+	// bindtextdomain(PACKAGE, LOCALEDIR);
+	// textdomain(PACKAGE);
 	while ((c = getopt_long(argc, argv,
 		short_opts, long_opts, NULL)) != -1) {
 		switch (c) {
@@ -115,7 +177,7 @@ main (int argc, char *argv[]) {
 				print_ascii = 1;
 				break;
 			case 'V':
-				print_version_and_exit();
+				//print_version_and_exit();
 			case 'h':
 			case '?':
 				usage();
@@ -137,7 +199,7 @@ main (int argc, char *argv[]) {
 		new.c_cc[VTIME] = 0;
 		if (tcsetattr(fd, TCSAFLUSH, &new) == -1)
 			perror("tcgetattr");
-		printf(_("\nPress any keys - "
+		printf(("\nPress any keys - "
 		         "Ctrl-D will terminate this program\n\n"));
 		while (1) {
 			n = read(fd, buf, 1);
@@ -196,7 +258,7 @@ main (int argc, char *argv[]) {
 		perror("KDSKBMODE");
 		exit(1);
 	}
-	printf(_("press any key (program terminates 10s after last keypress)...\n"));
+	printf(("press any key (program terminates 10s after last keypress)...\n"));
 	while (1) {
 		alarm(10);
 		n = read(fd, buf, sizeof(buf));
@@ -204,10 +266,10 @@ main (int argc, char *argv[]) {
 			if (!show_keycodes)
 				printf("0x%02x ", buf[i]);
 			else
-				printf(_("keycode %3d %s\n"),
+				printf(("keycode %3d %s\n"),
 					buf[i] & 0x7f,
-					buf[i] & 0x80 ? _("release")
-				                      : _("press"));
+					buf[i] & 0x80 ? ("release")
+				                      : ("press"));
 		}
 		if (!show_keycodes)
 			printf("\n");

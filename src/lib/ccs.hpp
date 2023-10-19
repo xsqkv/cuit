@@ -18,12 +18,6 @@
 	the License, or (at your option) any later version.
 */
 
-/*
-	Writen by Artem Vanty <25.01.2023>
-
-	License - MIT
-*/
-
 #pragma once
 
 template <typename T, typename U>
